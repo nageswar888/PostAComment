@@ -8,13 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class PostsComponent implements OnInit {
 
   posts = [{ "text": "hello", "postedBy": "nageswar"},
-           { "text": "hai", "postedBy": "kamal"}]
+           { "text": "hai", "postedBy": "kamal"},
+           { "text": "bye", "postedBy": "sai"},
+           { "text": "good bye", "postedBy": "kamal"}]
 
   constructor() { }
-
-alaram(){
-    alert("hello")
-}
 
   ngOnInit() {
   }
