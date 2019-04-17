@@ -1,0 +1,13 @@
+.navbar-custom {
+  background-color: burlywood;
+}
+
+#footer{
+  background-color: burlywood;
+  position: fixed;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
