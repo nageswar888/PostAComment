@@ -1,3 +1,17 @@
-<p>
-  comments-likes works!
-</p>
+
+<div><br><br></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <p>Post details here</p>
+      <button (click)="add_comment()">comments</button>&nbsp;
+      <button>Like</button>
+      <div *ngIf="flag">
+        <p>comments are here</p>
+    <input type="text" name="add_comment">
+    <input type="submit" value="add_comment">
+      </div>
+    </div>
+  </div>
+</div>

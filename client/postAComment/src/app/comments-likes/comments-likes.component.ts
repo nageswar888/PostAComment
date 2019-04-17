@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsLikesComponent implements OnInit {
 
+  flag= false;
   constructor() { }
 
+  add_comment(){
+    this.flag= true
+  }
   ngOnInit() {
   }
 
