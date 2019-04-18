@@ -6,5 +6,8 @@ export class postRoutes {
       .get(postController.getAll)
       .post(postController.createNew);
 
+    router.route('/post/:id')
+      .get(postController.getById)
+
   }
 }

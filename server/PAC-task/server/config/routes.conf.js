@@ -15,6 +15,16 @@ export default class RouteConfig {
             level: zlib.Z_BEST_COMPRESSION,
             threshold: "1kb"
         }));
+      application.use((req, res, next) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With, Authorization");
+        res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS, PATCH");
+        next();
+      });
+
+      application.options("*", (req, res, next) => {
+        res.end();
+      });
 
         application.use(express.static(_root + _nodeModules));
         application.use(express.static(_root + _clientFiles));

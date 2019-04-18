@@ -33,4 +33,16 @@ export class postDao {
         .catch(error => reject(error));
     });
   }
+
+  static getById(_paramet) {
+    return new Promise((resolve, reject) => {
+      models.Post.findAll({where : { id: _paramet}})
+        .then(post => {
+          resolve(post);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
 }

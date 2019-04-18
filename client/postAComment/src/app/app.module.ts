@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { CommentsLikesComponent } from './comments-likes/comments-likes.component';
 import { AppRoutingModule } from './/app-routing.module';
+import {PostService} from "./post.service";
+import {HttpClientModule} from "@angular/common/http";
+import {QueryApi} from "./commonservice/request/QueryApi";
 
 @NgModule({
   declarations: [
@@ -15,8 +18,9 @@ import { AppRoutingModule } from './/app-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [PostService,QueryApi],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

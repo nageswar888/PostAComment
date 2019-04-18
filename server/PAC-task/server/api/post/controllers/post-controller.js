@@ -14,4 +14,11 @@ export class postController {
       .then(post => res.status(200).json(post))
       .catch(error => res.status(400).json(error));
   }
+
+  static getById(req, res) {
+    let _paramet = req.params.id;
+    postDao.getById(_paramet)
+      .then(post => res.status(200).json(post))
+      .catch(error => res.status(400).json(error));
+  }
 }
