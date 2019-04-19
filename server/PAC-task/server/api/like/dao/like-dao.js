@@ -34,4 +34,16 @@ export class likeDao {
         .catch(error => reject(error));
     });
   }
+
+  static getById(paramet) {
+    return new Promise((resolve, reject) => {
+      models.Like.findAll({where:{postId: paramet}})
+        .then(like => {
+          resolve(like);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
 }

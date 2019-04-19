@@ -37,7 +37,7 @@ export class commentDao {
 
   static getById(params) {
     return new Promise((resolve, reject) => {
-      models.Comment.findAll({where: {id: params}})
+      models.Comment.findAll({where: {postId: params}})
         .then(comment => {
           resolve(comment);
         })

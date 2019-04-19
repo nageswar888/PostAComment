@@ -7,10 +7,18 @@ export class QueryApi {
   constructor(private http: HttpClient) { }
 
   doGet(url: string,  params: any) {
-    url = UserEndPoint(url);
+    url = UserEndPoint(url,params);
     console.log("id in QueryApi----------",params)
     console.log("url in QueryApi----------",url)
-    return this.http.get(url, {params: params});
+    return this.http.get(url, params);
   }
+
+  doPost(url: any, params: any) {
+    url = UserEndPoint(url, params);
+    console.log("obh",params);
+    //alert('>>--->'+url);
+    return this.http.post(url, params );
+  }
+
 
 }

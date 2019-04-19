@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {CommentsLikesService} from '../comments-likes.service';
 import {LikesService} from '../likes.service';
 import { ActivatedRoute } from '@angular/router';
+import {PostService} from '../post.service';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 
 
 @Component({
@@ -11,49 +13,77 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CommentsLikesComponent implements OnInit {
 
+  public complexForm : FormGroup;
+
   flag= false;
   id: number;
   private sub: any;
-
   public comments: any;
   public likes: any;
-  constructor(private service: CommentsLikesService,
+  public postings: any;
+
+  constructor(private cservice: CommentsLikesService,
               private likeservice: LikesService,
-              private route: ActivatedRoute) { }
-
-  add_comment(){
-    this.flag= true
-  }
-  ngOnInit() {
-    this.getting_id()
-    this.getComments(this.id);
-    this.getLikes();
-
-  }
-  getting_id(){
-    this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
-
+              private route: ActivatedRoute,
+              private service: PostService,
+              private fb: FormBuilder) {
+    this.complexForm = fb.group({
+      'name' : [null, Validators.required],
+      'description': [null,  Validators.required],
+      'startdate' : [null, Validators.required],
+      'enddate'    : [null,Validators.required]
     });
 
   }
 
+  add_comment(){
+    this.flag= true
+  }
+
+  ngOnInit() {
+    this.getting_id()
+    this.getComments(this.id);
+    this.getLikes(this.id);
+    this.getPostInComt(this.id)
+  }
+
+  getting_id(){
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+    });
+  }
+
   getComments(id) {
-/*
-    console.log("id is-------",id)
-*/
-    this.service.getComments(id).subscribe((response) => {
-      console.log("getcomment responce-----------",response);
-      this.comments = response.rows;
+    //console.log("id is-------",id)
+    this.cservice.getComments(id).subscribe((response) => {
+      this.comments = response;
+
+      //console.log("comments responce-----------",this.comments);
+
     })
   }
 
-  getLikes() {
-    this.likeservice.getLikes().subscribe((response) => {
-/*
-      console.log(response);
-*/
-      this.likes= response.count
+  getLikes(id) {
+    this.likeservice.getLikes(id).subscribe((response) => {
+      this.likes= response
+      console.log("----------",this.likes)
     })
   }
+
+  getPostInComt(id) {
+    this.service.getPostInComt(id).subscribe((response) => {
+      //console.log(response);
+      this.postings = response;
+    })
+  }
+
+  submit(value){
+    this.cservice.createComment(value).subscribe(users=>{
+      console.log(users);
+      alert("Successfully Created");
+    });
+    console.log(value);
+  }
+
 }
+

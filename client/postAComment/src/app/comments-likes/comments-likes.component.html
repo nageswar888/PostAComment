@@ -2,7 +2,11 @@
   <div class="row" id="c_head">
     <div class="col-md-5"></div>
       <div class="col-md-6" id="post_name">
-        <h1>hai</h1>
+        <div *ngIf="postings">
+        <h1>{{postings[0].text}}</h1>
+          <span>{{postings[0].postedBy}}</span>&nbsp;
+          <span>{{postings[0].createdAt|date}}</span>
+        </div>
       </div>
   </div>
 
@@ -11,7 +15,8 @@
     <div class="col-md-8"></div>
     <div>
       <button type="button" class="btn btn-primary" (click)="add_comment()">Add Comments</button>&nbsp;
-      <button type="button" class="btn btn-primary">{{likes}} Like</button>
+      <button type="button" class="btn btn-primary">
+        <div *ngIf="likes">{{likes.length}} Like</div></button>
     </div>
   </div>
 <div>
@@ -22,9 +27,8 @@
         <hr>
       </div>
 </div>
-      <span>likes are </span>{{likes}}
-
       <div *ngIf="flag">
+        <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="add comments">
         </div>
@@ -32,6 +36,6 @@
           <input type="text" class="form-control" placeholder="add user">
         </div>
         <button type="submit" class="btn btn-primary">Add</button>
+        </form>
       </div>
 </div>
-product id -----------{{id}}

@@ -6,6 +6,9 @@ export class likeRoutes {
       .get(likeController.getAll)
       .post(likeController.createNew);
 
+    router.route('/like/:id')
+      .get(likeController.getById)
+
   }
 }
 

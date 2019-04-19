@@ -19,4 +19,13 @@ export class CommentsLikesService {
         catchError(err => of([err]))
       );
   }
+
+  createComment(params):Observable<any>{
+    console.log("id in service-----",params)
+    return this.queryApi.doPost('COMMENT',params)
+      .pipe(
+        catchError(err => of([err]))
+      );
+  }
+
 }

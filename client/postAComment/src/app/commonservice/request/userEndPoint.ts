@@ -1,24 +1,33 @@
-/*
 import { environment } from './../../../environments/environment';
-export const posts = 'posts'
+export const POST = 'POST';
+export const COMMENT = 'COMMENT';
+export const LIKE = 'LIKE';
 export const UserEndPoint = (type:string,params:any)=>{
+  console.log("------------------------------------",params)
   switch(type){
-    case posts:
-      let ActionPro = environment.API_ROOT +'/posts';
-      if( params.hasOwnProperty('id')){
-        ActionPro +='/'+ params.id;
+    /*case POST:
+      return environment.API_ROOT + 'post/' ;*/
+    case POST:
+      let ActionPro = environment.API_ROOT +'post';
+      console.log( "------------",ActionPro)
+      if( typeof params != "undefined"){
+        ActionPro +='/'+ params;
+        console.log("ActionPro")
       }
-      //alert(params + "<---->" + type);
       else{
-        return environment.API_ROOT + '/project/'+params;
+        ActionPro = environment.API_ROOT + 'post';
       }
       return ActionPro;
+
+    case COMMENT:
+      return environment.API_ROOT + 'comment/'+params ;
+
+    case LIKE:
+      return environment.API_ROOT + 'like/'+params;
   }
-}
-*/
 
 
-import { environment } from "../../../environments/environment";
+/*import { environment } from "../../../environments/environment";
 export const POST = 'POST';
 export const COMMENT = 'COMMENT';
 export const LIKE = 'LIKE';
@@ -32,4 +41,5 @@ export const UserEndPoint = (type: string) => {
   };
   console.log("UserEndPoints---->",environment.API_ROOT + endpoints[type])
   return environment.API_ROOT + endpoints[type];
-};
+};*/
+

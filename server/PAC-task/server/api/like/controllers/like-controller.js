@@ -14,5 +14,12 @@ export class likeController {
       .then(like => res.status(200).json(like))
       .catch(error => res.status(400).json(error));
   }
+
+  static getById(req, res) {
+    let paramet = req.params.id
+    likeDao.getById(paramet)
+      .then(like => res.status(200).json(like))
+      .catch(error => res.status(400).json(error));
+  }
 }
 

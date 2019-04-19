@@ -8,6 +8,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import {PostService} from "./post.service";
 import {HttpClientModule} from "@angular/common/http";
 import {QueryApi} from "./commonservice/request/QueryApi";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {QueryApi} from "./commonservice/request/QueryApi";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [PostService,QueryApi],
   bootstrap: [AppComponent]

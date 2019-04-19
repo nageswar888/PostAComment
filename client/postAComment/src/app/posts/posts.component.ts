@@ -9,11 +9,6 @@ import {PostService} from '../post.service';
 })
 export class PostsComponent implements OnInit {
 
-  /*posts = [{ "text": "hello", "postedBy": "nageswar"},
-           { "text": "hai", "postedBy": "kamal"},
-           { "text": "bye", "postedBy": "sai"},
-           { "text": "good bye", "postedBy": "kamal"}]
-*/
   public postings: any;
 
   constructor(private service: PostService ) { }
