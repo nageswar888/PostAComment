@@ -1,0 +1,14 @@
+#post_name{
+  height: 200px;
+  padding-top: 40px;
+}
+
+#c_head{
+  background-color: cadetblue;
+}
+input{
+  width: 15%;
+}
+#spann{
+  text-align: center;
+}

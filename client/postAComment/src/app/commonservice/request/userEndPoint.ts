@@ -30,6 +30,6 @@ export const UserEndPoint = (type: string) => {
     [COMMENT]: 'comment',
     [LIKE]: 'like'
   };
-  console.log("---->",environment.API_ROOT + endpoints[type])
+  console.log("UserEndPoints---->",environment.API_ROOT + endpoints[type])
   return environment.API_ROOT + endpoints[type];
 };

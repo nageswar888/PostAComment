@@ -6,5 +6,8 @@ export class commentRoutes {
       .get(commentController.getAll)
       .post(commentController.createNew);
 
+    router.route('/comment/:id')
+      .get(commentController.getById)
+
   }
 }

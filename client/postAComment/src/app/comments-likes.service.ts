@@ -12,10 +12,9 @@ export class CommentsLikesService {
 
   constructor(private http: HttpClient, private queryApi:QueryApi) { }
 
-  getComments():Observable<any>{
-    let req
-    console.log("calling api")
-    return this.queryApi.doGet('COMMENT',req)
+  getComments(params):Observable<any>{
+    console.log("id in service-----",params)
+    return this.queryApi.doGet('COMMENT',params)
       .pipe(
         catchError(err => of([err]))
       );

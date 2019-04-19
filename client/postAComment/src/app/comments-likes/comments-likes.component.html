@@ -1,17 +1,37 @@
 
-    <div>
-      <p>Post details here</p>
-      <button (click)="add_comment()">comments</button>&nbsp;
-      <button>Like</button>
-      <div *ngFor="let comment of comments">
-        {{comment.text}}
+  <div class="row" id="c_head">
+    <div class="col-md-5"></div>
+      <div class="col-md-6" id="post_name">
+        <h1>hai</h1>
       </div>
-      <span>likes are </span>{{nag}}
+  </div>
+
+<div><br>
+  <div class="row">
+    <div class="col-md-8"></div>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="add_comment()">Add Comments</button>&nbsp;
+      <button type="button" class="btn btn-primary">{{likes}} Like</button>
+    </div>
+  </div>
+<div>
+      <div *ngFor="let comment of comments">
+        <p>{{comment.text}}</p>
+        <span id="spann">{{comment.commentedBy}}&nbsp;
+          {{comment.createdAt|date}}</span>
+        <hr>
+      </div>
+</div>
+      <span>likes are </span>{{likes}}
 
       <div *ngIf="flag">
-        <input type="text" name="add_comment" placeholder="add comments">
-        <input type="text" name="user" placeholder="add user">
-        <input type="submit" value="add">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="add comments">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="add user">
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
       </div>
-    </div>
-
+</div>
+product id -----------{{id}}

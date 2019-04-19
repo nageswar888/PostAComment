@@ -8,7 +8,7 @@ import {CommentsLikesComponent} from "./comments-likes/comments-likes.component"
 const routes: Routes = [
   { path: '', redirectTo: '/posts', pathMatch: 'full' },
   { path: 'posts', component: PostsComponent },
-  { path: 'comments-likes', component: CommentsLikesComponent}
+  { path: 'comments-likes/:id', component: CommentsLikesComponent}
 ];
 
 @NgModule({

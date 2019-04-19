@@ -34,4 +34,16 @@ export class commentDao {
         .catch(error => reject(error));
     });
   }
+
+  static getById(params) {
+    return new Promise((resolve, reject) => {
+      models.Comment.findAll({where: {id: params}})
+        .then(comment => {
+          resolve(comment);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
 }

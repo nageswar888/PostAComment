@@ -3,7 +3,7 @@
 </div>
 <div id="bottom">
   <div *ngFor="let post of postings">
-    <a routerLink="/comments-likes"><div>{{post.text}}</div></a>
+    <a [routerLink]="['/comments-likes', post.id]"><div>{{post.text}}</div></a>
     {{post.createdAt|date}}    {{post.postedBy}}
   </div>
 </div>

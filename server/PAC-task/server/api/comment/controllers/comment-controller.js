@@ -14,4 +14,11 @@ export class commentController {
       .then(comment => res.status(200).json(comment))
       .catch(error => res.status(400).json(error));
   }
+
+  static getById(req, res) {
+    let params= req.params.id
+    commentDao.getById(params)
+      .then(comment => res.status(200).json(comment))
+      .catch(error => res.status(400).json(error));
+  }
 }
