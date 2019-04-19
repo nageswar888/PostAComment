@@ -1,14 +1,9 @@
-
-<div class="container">
-  <div class="row">
-  <div class="col-md-5"></div>
-<div class="col-md-4">
-  <h3>Posts</h3>
+<div id="top">
+  <h2>Posts</h2>
+</div>
+<div id="bottom">
   <div *ngFor="let post of postings">
     <a routerLink="/comments-likes"><div>{{post.text}}</div></a>
-    {{post.createdAt|date}}
+    {{post.createdAt|date}}    {{post.postedBy}}
   </div>
 </div>
-</div>
-</div>
-

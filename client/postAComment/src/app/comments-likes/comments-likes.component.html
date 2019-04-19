@@ -1,18 +1,17 @@
 
-<div><br><br></div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-5"></div>
-    <div class="col-md-4">
+    <div>
       <p>Post details here</p>
       <button (click)="add_comment()">comments</button>&nbsp;
       <button>Like</button>
+      <div *ngFor="let comment of comments">
+        {{comment.text}}
+      </div>
+      <span>likes are </span>{{nag}}
+
       <div *ngIf="flag">
-        <p>comments are here</p>
         <input type="text" name="add_comment" placeholder="add comments">
         <input type="text" name="user" placeholder="add user">
         <input type="submit" value="add">
       </div>
     </div>
-  </div>
-</div>
+

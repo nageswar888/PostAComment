@@ -20,11 +20,15 @@ export const UserEndPoint = (type:string,params:any)=>{
 
 import { environment } from "../../../environments/environment";
 export const POST = 'POST';
+export const COMMENT = 'COMMENT';
+export const LIKE = 'LIKE';
 
 export const UserEndPoint = (type: string) => {
   console.log("End")
   const endpoints = {
     [POST]: 'post',
+    [COMMENT]: 'comment',
+    [LIKE]: 'like'
   };
   console.log("---->",environment.API_ROOT + endpoints[type])
   return environment.API_ROOT + endpoints[type];

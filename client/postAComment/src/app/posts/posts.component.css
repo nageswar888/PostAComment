@@ -1,0 +1,11 @@
+#top{
+  text-align: center;
+  background-color: rebeccapurple;
+  height: 100px;
+  color: brown;
+  padding-top: 20px;
+}
+
+h2{
+  font-weight: bold;
+}
