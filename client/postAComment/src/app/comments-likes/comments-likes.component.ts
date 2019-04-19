@@ -22,19 +22,13 @@ export class CommentsLikesComponent implements OnInit {
   public likes: any;
   public postings: any;
 
+
   constructor(private cservice: CommentsLikesService,
               private likeservice: LikesService,
               private route: ActivatedRoute,
               private service: PostService,
-              private fb: FormBuilder) {
-    this.complexForm = fb.group({
-      'name' : [null, Validators.required],
-      'description': [null,  Validators.required],
-      'startdate' : [null, Validators.required],
-      'enddate'    : [null,Validators.required]
-    });
-
-  }
+              private fb: FormBuilder) { }
+              
 
   add_comment(){
     this.flag= true
@@ -45,6 +39,12 @@ export class CommentsLikesComponent implements OnInit {
     this.getComments(this.id);
     this.getLikes(this.id);
     this.getPostInComt(this.id)
+
+    this.complexForm = this.fb.group({
+      'text' : [null, Validators.required],
+      'commentedBy': [null,  Validators.required],
+      'postId':[this.id]
+    });
   }
 
   getting_id(){
@@ -59,14 +59,13 @@ export class CommentsLikesComponent implements OnInit {
       this.comments = response;
 
       //console.log("comments responce-----------",this.comments);
-
     })
   }
 
   getLikes(id) {
     this.likeservice.getLikes(id).subscribe((response) => {
       this.likes= response
-      console.log("----------",this.likes)
+      //console.log("----------",this.likes)
     })
   }
 
@@ -78,6 +77,7 @@ export class CommentsLikesComponent implements OnInit {
   }
 
   submit(value){
+    console.log("------------------",value)
     this.cservice.createComment(value).subscribe(users=>{
       console.log(users);
       alert("Successfully Created");

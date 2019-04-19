@@ -2,6 +2,7 @@ import { environment } from './../../../environments/environment';
 export const POST = 'POST';
 export const COMMENT = 'COMMENT';
 export const LIKE = 'LIKE';
+export const COMMENTPOST = 'COMMENTPOST'
 export const UserEndPoint = (type:string,params:any)=>{
   console.log("------------------------------------",params)
   switch(type){
@@ -24,6 +25,9 @@ export const UserEndPoint = (type:string,params:any)=>{
 
     case LIKE:
       return environment.API_ROOT + 'like/'+params;
+
+    case COMMENTPOST:
+      return environment.API_ROOT + 'comment/'
   }
 
 

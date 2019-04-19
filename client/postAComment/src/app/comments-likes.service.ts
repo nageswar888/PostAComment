@@ -13,7 +13,7 @@ export class CommentsLikesService {
   constructor(private http: HttpClient, private queryApi:QueryApi) { }
 
   getComments(params):Observable<any>{
-    console.log("id in service-----",params)
+    //console.log("id in service-----",params)
     return this.queryApi.doGet('COMMENT',params)
       .pipe(
         catchError(err => of([err]))
@@ -21,8 +21,8 @@ export class CommentsLikesService {
   }
 
   createComment(params):Observable<any>{
-    console.log("id in service-----",params)
-    return this.queryApi.doPost('COMMENT',params)
+    console.log("object in service-----",params)
+    return this.queryApi.doPost('COMMENTPOST',params)
       .pipe(
         catchError(err => of([err]))
       );
