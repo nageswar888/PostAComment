@@ -24,10 +24,8 @@ export class likeDao {
 
   static createNew(_body) {
     return new Promise((resolve, reject) => {
-      models.Like.create({
+      models.Likes.create({
         postId: _body.postId,
-        likedBy: _body.likedBy
-
       }).then(like => {
         resolve(like);
       })
@@ -37,7 +35,7 @@ export class likeDao {
 
   static getById(paramet) {
     return new Promise((resolve, reject) => {
-      models.Like.findAll({where:{postId: paramet}})
+      models.Likes.findAll({where:{postId: paramet}})
         .then(like => {
           resolve(like);
         })

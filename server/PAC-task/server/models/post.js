@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'id',
       sourceKey : 'id'
     });
-    Post.hasMany(models.Like, {
+    Post.hasMany(models.Likes, {
       foreignKey: 'id',
       sourceKey : 'id'
     });

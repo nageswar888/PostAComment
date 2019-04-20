@@ -15,9 +15,6 @@ module.exports = {
           model: 'Posts'
         }
       },
-      likedBy: {
-        type: Sequelize.STRING
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
