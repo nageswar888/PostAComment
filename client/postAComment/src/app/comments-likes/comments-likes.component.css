@@ -10,5 +10,10 @@ input{
   width: 15%;
 }
 #spann{
-  text-align: center;
+  padding-left: 110px;
+}
+
+#commentsid{
+  padding-left: 50px;
+
 }

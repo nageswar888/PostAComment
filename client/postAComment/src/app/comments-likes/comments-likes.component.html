@@ -14,19 +14,25 @@
   <div class="row">
     <div class="col-md-8"></div>
     <div>
-      <button type="button" class="btn btn-primary" (click)="add_comment()">Add Comments</button>&nbsp;
+      <button type="button" class="btn btn-primary" (click)="add_comment()"><i class="far fa-comment-alt"></i> Add Comments</button>&nbsp;
       <button type="button" class="btn btn-primary">
-        <div *ngIf="likes">{{likes.length}} Like</div></button>
+        <div *ngIf="likes">{{likes.length}} <i class="far fa-thumbs-up"></i> Like </div></button>
     </div>
   </div>
 <div>
-      <div *ngFor="let comment of comments">
-        <p>{{comment.text}}</p>
-        <span id="spann">{{comment.commentedBy}}&nbsp;
-          {{comment.createdAt|date}}</span>
-        <hr>
+  <b id="commentsid">comments</b>
+      <div *ngFor="let comment of comments"><hr>
+        <b><p id="spann">{{comment.commentedBy}}</p></b>
+        <div class="row">
+        <div class="col-md-1"></div>
+          <div class="col-md-8">{{comment.text}}</div>
+          <div>{{comment.createdAt|date}}</div>
+        </div>
       </div>
 </div>
+
+<!--------------creating a comment------------------------>
+
       <div *ngIf="flag">
         <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
         <!--<div class="form-group">

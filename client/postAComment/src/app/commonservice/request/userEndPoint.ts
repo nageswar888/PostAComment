@@ -3,32 +3,32 @@ export const POST = 'POST';
 export const COMMENT = 'COMMENT';
 export const LIKE = 'LIKE';
 export const COMMENTPOST = 'COMMENTPOST'
-export const UserEndPoint = (type:string,params:any)=>{
-  console.log("------------------------------------",params)
-  switch(type){
+export const UserEndPoint = (type:string,params:any)=> {
+  console.log("------------------------------------", params)
+  switch (type) {
     /*case POST:
       return environment.API_ROOT + 'post/' ;*/
     case POST:
-      let ActionPro = environment.API_ROOT +'post';
-      console.log( "------------",ActionPro)
-      if( typeof params != "undefined"){
-        ActionPro +='/'+ params;
+      let ActionPro = environment.API_ROOT + 'post';
+      console.log("------------", ActionPro)
+      if (typeof params != "undefined") {
+        ActionPro += '/' + params;
         console.log("ActionPro")
-      }
-      else{
+      } else {
         ActionPro = environment.API_ROOT + 'post';
       }
       return ActionPro;
 
     case COMMENT:
-      return environment.API_ROOT + 'comment/'+params ;
+      return environment.API_ROOT + 'comment/' + params;
 
     case LIKE:
-      return environment.API_ROOT + 'like/'+params;
+      return environment.API_ROOT + 'like/' + params;
 
     case COMMENTPOST:
       return environment.API_ROOT + 'comment/'
   }
+}
 
 
 /*import { environment } from "../../../environments/environment";

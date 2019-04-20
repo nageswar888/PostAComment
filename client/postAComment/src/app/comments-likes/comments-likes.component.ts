@@ -4,6 +4,7 @@ import {LikesService} from '../likes.service';
 import { ActivatedRoute } from '@angular/router';
 import {PostService} from '../post.service';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class CommentsLikesComponent implements OnInit {
               private likeservice: LikesService,
               private route: ActivatedRoute,
               private service: PostService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private Router: Router) { }
               
 
   add_comment(){
@@ -98,7 +100,7 @@ export class CommentsLikesComponent implements OnInit {
   console.log("------------------",formdata)
   this.cservice.createComment(formdata).subscribe(users=>{
   console.log(users);
-    });
+  });
   alert("comment"+formdata.text+"added successfully")
   }
 
