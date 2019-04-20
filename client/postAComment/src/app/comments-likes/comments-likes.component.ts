@@ -21,6 +21,8 @@ export class CommentsLikesComponent implements OnInit {
   public comments: any;
   public likes: any;
   public postings: any;
+  public submitted: boolean;
+  private formdata: any;
 
 
   constructor(private cservice: CommentsLikesService,
@@ -46,6 +48,9 @@ export class CommentsLikesComponent implements OnInit {
       'postId':[this.id]
     });
   }
+
+  get f() { return this.complexForm.controls; }
+
 
   getting_id(){
     this.sub = this.route.params.subscribe(params => {
@@ -77,12 +82,24 @@ export class CommentsLikesComponent implements OnInit {
   }
 
   submit(value){
-    console.log("------------------",value)
-    this.cservice.createComment(value).subscribe(users=>{
-      console.log(users);
-      alert("Successfully Created");
+    this.submitted = true
+    this.formdata = value
+
+    if (this.complexForm.invalid) {
+      return;
+    }
+    else{
+      this.createComment(this.formdata)
+    }
+
+    }
+
+  createComment(formdata){
+  console.log("------------------",formdata)
+  this.cservice.createComment(formdata).subscribe(users=>{
+  console.log(users);
     });
-    console.log(value);
+  alert("comment"+formdata.text+"added successfully")
   }
 
 }
