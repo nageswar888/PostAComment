@@ -2,18 +2,22 @@ import { environment } from './../../../environments/environment';
 export const POST = 'POST';
 export const COMMENT = 'COMMENT';
 export const LIKE = 'LIKE';
-export const COMMENTPOST = 'COMMENTPOST'
+export const COMMENTPOST = 'COMMENTPOST';
+export const LIKEPOST = 'LIKEPOST';
+
 export const UserEndPoint = (type:string,params:any)=> {
+/*
   console.log("------------------------------------", params)
+*/
   switch (type) {
     /*case POST:
       return environment.API_ROOT + 'post/' ;*/
     case POST:
       let ActionPro = environment.API_ROOT + 'post';
-      console.log("------------", ActionPro)
+      //console.log("------------", ActionPro)
       if (typeof params != "undefined") {
         ActionPro += '/' + params;
-        console.log("ActionPro")
+        //console.log("ActionPro")
       } else {
         ActionPro = environment.API_ROOT + 'post';
       }
@@ -27,6 +31,10 @@ export const UserEndPoint = (type:string,params:any)=> {
 
     case COMMENTPOST:
       return environment.API_ROOT + 'comment/'
+
+    case LIKEPOST:
+      return environment.API_ROOT + 'like/'
+
   }
 }
 

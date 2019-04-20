@@ -4,7 +4,7 @@ import Promise from 'bluebird';
 export class likeDao {
   static getAll() {
     return new Promise((resolve, reject) => {
-      models.Like.findAndCountAll()
+      models.Likes.findAndCountAll()
         .then(like => {
           resolve(like);
         })

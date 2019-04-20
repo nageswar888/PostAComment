@@ -19,4 +19,10 @@ export class LikesService {
         catchError(err => of([err]))
       );
   }
+  postLike(params):Observable<any>{
+    return this.queryApi.doPost('LIKEPOST',{"postId":params})
+      .pipe(
+        catchError(err => of([err]))
+      );
+  }
 }
