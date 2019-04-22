@@ -9,6 +9,7 @@ import {PostService} from "./post.service";
 import {HttpClientModule} from "@angular/common/http";
 import {QueryApi} from "./commonservice/request/QueryApi";
 import { ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [PostService,QueryApi],
   bootstrap: [AppComponent]

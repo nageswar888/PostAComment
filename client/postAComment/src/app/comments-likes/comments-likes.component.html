@@ -36,7 +36,7 @@
         <div class="form-group">
           <input type="text" formControlName="commentedBy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.commentedBy.errors }" placeholder="User"/>
           <div *ngIf="submitted && !!f.commentedBy.errors" class="invalid-feedback">
-            <div *ngIf="!!f.commentedBy.errors.required">commentedBy is required</div>
+            <div *ngIf="!!f.commentedBy.errors.required">User name is required</div>
           </div>
         </div>
 
@@ -47,15 +47,20 @@
 
   <div>
   <b id="commentsid">comments</b>
-      <div *ngFor="let comment of comments"><hr>
+      <div *ngFor="let comment of comments | paginate: { itemsPerPage: 2, currentPage: p }"><hr>
         <b><p id="spann">{{comment.commentedBy}}</p></b>
         <div class="row">
         <div class="col-md-1"></div>
           <div class="col-md-8">{{comment.text}}</div>
           <div>{{comment.createdAt|date}}</div>
         </div>
-      </div>
-</div>
+      </div><br>
+
+    <div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+
 
 <!--------------creating a comment------------------------>
 

@@ -37,7 +37,7 @@
 
   <div class="col-md-4"></div>
   <div>
-  <div *ngFor="let post of postings">
+  <div *ngFor="let post of postings | paginate: { itemsPerPage: 3, currentPage: p }">
     <div class="row">
       <div class="col-md-2"></div>
       <div><b>{{post.postedBy}}</b>
@@ -45,7 +45,12 @@
         <a [routerLink]="['/comments-likes', post.id]"><div id="post_size">{{post.text}}</div></a>
     </div>
     </div>
-  </div>
+  </div><br>
+
+    <div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+
   </div>
 
 <!------------------------------------------------------------------------------>

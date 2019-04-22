@@ -14,6 +14,9 @@ import {Router} from '@angular/router';
 })
 export class CommentsLikesComponent implements OnInit {
 
+  p: number = 1;
+  collection: any[]/* = someArrayOfThings*/;
+
   public complexForm : FormGroup;
 
   flag= false;
