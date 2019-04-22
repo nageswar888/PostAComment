@@ -53,7 +53,6 @@ export class PostsComponent implements OnInit {
     else{
       this.createPost(this.formdata)
       location.reload();
-
     }
 
   }
