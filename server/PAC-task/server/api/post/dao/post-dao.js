@@ -45,4 +45,16 @@ export class postDao {
         });
     });
   }
+
+  static delete(_paramet) {
+    return new Promise((resolve, reject) => {
+      models.Post.destroy({where : { id: _paramet}})
+        .then(post => {
+          resolve(post);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
 }

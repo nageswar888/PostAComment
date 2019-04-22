@@ -4,6 +4,8 @@ export const COMMENT = 'COMMENT';
 export const LIKE = 'LIKE';
 export const COMMENTPOST = 'COMMENTPOST';
 export const LIKEPOST = 'LIKEPOST';
+export const POSTSPOST = 'POSTSPOST';
+
 
 export const UserEndPoint = (type:string,params:any)=> {
 /*
@@ -34,6 +36,9 @@ export const UserEndPoint = (type:string,params:any)=> {
 
     case LIKEPOST:
       return environment.API_ROOT + 'like/'
+
+    case POSTSPOST:
+      return environment.API_ROOT + 'post/'
 
   }
 }

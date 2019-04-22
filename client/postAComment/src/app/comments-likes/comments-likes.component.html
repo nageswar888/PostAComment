@@ -1,11 +1,11 @@
 
   <div class="row" id="c_head">
-    <div class="col-md-5"></div>
+    <div class="col-md-4"></div>
       <div class="col-md-6" id="post_name">
         <div *ngIf="postings">
+          <div><b>{{postings[0].postedBy}}</b></div>
+          <div>{{postings[0].createdAt|date:'short'}}</div>
         <h1>{{postings[0].text}}</h1>
-          <span>{{postings[0].postedBy}}</span>&nbsp;
-          <span>{{postings[0].createdAt|date}}</span>
         </div>
       </div>
   </div>
@@ -14,12 +14,38 @@
   <div class="row">
     <div class="col-md-8"></div>
     <div>
-      <button type="button" class="btn btn-primary" (click)="add_comment()"><i class="far fa-comment-alt"></i> Add Comments</button>&nbsp;
+      <button type="button" class="btn btn-primary" (click)="add_comment()"><i class="far fa-comment-alt"></i> Add Comment</button>&nbsp;
       <button type="button" class="btn btn-primary" (click)="post_likes()">
         <div *ngIf="likes">{{likes.length}} <i class="far fa-thumbs-up"></i> Like </div></button>
     </div>
   </div>
-<div>
+
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div *ngIf="flag">
+      <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
+
+        <div class="form-group">
+          <input type="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" placeholder="Enter comment"/>
+          <div *ngIf="submitted && !!f.text.errors" class="invalid-feedback">
+            <div *ngIf="!!f.text.errors.required">text is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="text" formControlName="commentedBy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.commentedBy.errors }" placeholder="User"/>
+          <div *ngIf="submitted && !!f.commentedBy.errors" class="invalid-feedback">
+            <div *ngIf="!!f.commentedBy.errors.required">commentedBy is required</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+  </div>
+
+  <div>
   <b id="commentsid">comments</b>
       <div *ngFor="let comment of comments"><hr>
         <b><p id="spann">{{comment.commentedBy}}</p></b>
@@ -33,28 +59,6 @@
 
 <!--------------creating a comment------------------------>
 
-<div class="row">
-  <div class="col-md-4"></div>
-      <div *ngIf="flag">
-        <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
 
-          <div class="form-group">
-            <input type="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" placeholder="enter comments"/>
-            <div *ngIf="submitted && !!f.text.errors" class="invalid-feedback">
-              <div *ngIf="!!f.text.errors.required">text is required</div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <input type="text" formControlName="commentedBy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.commentedBy.errors }" placeholder="user"/>
-            <div *ngIf="submitted && !!f.commentedBy.errors" class="invalid-feedback">
-              <div *ngIf="!!f.commentedBy.errors.required">commentedBy is required</div>
-            </div>
-          </div>
-
-        <button type="submit" class="btn btn-primary">Add</button>
-        </form>
-      </div>
-  </div>
 
 

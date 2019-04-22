@@ -46,4 +46,17 @@ export class commentDao {
         });
     });
   }
+
+
+  static deleteById(params) {
+    return new Promise((resolve, reject) => {
+      models.Comment.destroy({where: {id: params}})
+        .then(comment => {
+          resolve(comment);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
 }

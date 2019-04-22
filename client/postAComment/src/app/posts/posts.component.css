@@ -1,8 +1,8 @@
 #top{
   text-align: center;
   background-color: rebeccapurple;
-  height: 100px;
-  color: brown;
+  height: 80px;
+  color: darkorange;
   padding-top: 20px;
 }
 
@@ -12,4 +12,8 @@ h2{
 
 #post_size{
   font-size: 40px;
+}
+
+#padding{
+  padding: 10px;
 }

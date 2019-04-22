@@ -8,6 +8,7 @@ export class commentRoutes {
 
     router.route('/comment/:id')
       .get(commentController.getById)
+      .delete(commentController.deleteById)
 
   }
 }

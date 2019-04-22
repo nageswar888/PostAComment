@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../post.service';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 
 
 @Component({
@@ -9,19 +10,61 @@ import {PostService} from '../post.service';
 })
 export class PostsComponent implements OnInit {
 
-  public postings: any;
+  public complexForm : FormGroup;
 
-  constructor(private service: PostService ) { }
+  public postings: any;
+  public flag: boolean;
+  public submitted: boolean;
+  public formdata: any;
+
+  constructor(private service: PostService,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
     this.getpost()
 
+    this.complexForm = this.fb.group({
+      'text' : [null, Validators.required],
+      'postedBy': [null,  Validators.required],
+    });
+
     }
+
+  get f() { return this.complexForm.controls; }
+
+
   getpost() {
     this.service.getPost().subscribe((response) => {
       console.log(response);
       this.postings = response.rows;
     })
   }
+
+  form(){
+    this.flag=true
+  }
+
+  submit(value){
+    this.submitted = true
+    this.formdata = value
+    if (this.complexForm.invalid) {
+      return;
+    }
+    else{
+      this.createPost(this.formdata)
+      location.reload();
+
+    }
+
+  }
+
+
+  createPost(formdata){
+    //console.log("------------------",formdata)
+    this.service.createPost(formdata).subscribe(users=>{
+      console.log(users);
+    });
+  }
+
 
 }

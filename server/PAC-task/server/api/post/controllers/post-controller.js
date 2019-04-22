@@ -21,4 +21,11 @@ export class postController {
       .then(post => res.status(200).json(post))
       .catch(error => res.status(400).json(error));
   }
+
+  static delete(req, res) {
+    let _paramet = req.params.id;
+    postDao.delete(_paramet)
+      .then(post => res.status(200).json(post))
+      .catch(error => res.status(400).json(error));
+  }
 }

@@ -8,6 +8,7 @@ export class postRoutes {
 
     router.route('/post/:id')
       .get(postController.getById)
+      .delete(postController.delete)
 
   }
 }

@@ -86,6 +86,7 @@ export class CommentsLikesComponent implements OnInit {
     this.likeservice.postLike(params).subscribe((responce) => {
       console.log(responce)
     })
+    location.reload();
   }
 
   getPostInComt(id) {
@@ -104,6 +105,7 @@ export class CommentsLikesComponent implements OnInit {
     }
     else{
       this.createComment(this.formdata)
+      location.reload()
     }
 
     }
@@ -113,7 +115,6 @@ export class CommentsLikesComponent implements OnInit {
   this.cservice.createComment(formdata).subscribe(users=>{
   console.log(users);
   });
-  alert("comment "+formdata.text+" added successfully")
   }
 
 
