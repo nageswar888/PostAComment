@@ -46,18 +46,24 @@
   </div>
 
   <div>
-  <b id="commentsid">comments</b>
-      <div *ngFor="let comment of comments | paginate: { itemsPerPage: 2, currentPage: p }"><hr>
-        <b><p id="spann">{{comment.commentedBy}}</p></b>
-        <div class="row">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-15"><b>comments</b>
+      </div>
+    </div>
+    <div *ngFor="let comment of comments | paginate: { itemsPerPage: 2, currentPage: p }"><hr>
+      <div class="row">
         <div class="col-md-1"></div>
-          <div class="col-md-8">{{comment.text}}</div>
-          <div>{{comment.createdAt|date}}</div>
-        </div>
-      </div><br>
+        <div class="col-md-11"><p><b>{{comment.commentedBy}}</b></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">{{comment.text}}</div>
+        <div class="col-md-3" id="date_color">{{comment.createdAt|date}}</div>
+      </div>
+    </div><br>
     <div>
-      <!--pagination-->
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
   </div>
 

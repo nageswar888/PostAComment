@@ -2,17 +2,19 @@
 
 <div id="top">
   <h2>Posts</h2>
-</div>
+</div><br>
 
-<div class="jumbotron">
-<div id="padding">
-<button type="button" class="btn btn-primary" (click)="form()"><i class="far fa-clipboard"></i>&nbsp;<b>Add Post</b></button><br><br>
-</div>
+<div class="row">
+  <div class="col-md-10"></div>
+  <div class="col-md-2">
+  <button type="button" class="btn btn-primary" (click)="form()"><i class="far fa-clipboard"></i>&nbsp;<b>Add Post</b></button><br><br>
+  </div>
+  </div>
   <!--adding a post-->
 
 <div class="row">
   <div class="col-md-4"></div>
-  <div>
+  <div class="col-md-3" >
   <div *ngIf="flag">
   <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
     <div class="form-group">
@@ -31,23 +33,18 @@
   </form>
   </div>
   </div>
+  <div class="col-md-5"></div>
 </div>
-
- <!-- <div class="card">
-    <div class="card-body">
-      This is some text within a card body.
-    </div>
-  </div>-->
 
 <!--posts-->
   <div class="col-md-4"></div>
   <div>
-  <div *ngFor="let post of postings | paginate: { itemsPerPage: 3, currentPage: p }">
+  <div *ngFor="let post of postings | paginate: { itemsPerPage: 3, currentPage: p }"><hr>
     <div class="row">
       <div class="col-md-2"></div>
-      <div><b>{{post.postedBy}}</b>
+      <div class="col-md-10"><b>{{post.postedBy}}</b>
         <div class="row"></div>
-        <a [routerLink]="['/comments-likes', post.id]"><div id="post_size">{{i}}{{post.text}}</div></a>
+        <a [routerLink]="['/comments-likes', post.id]"><div id="post_size">{{post.text}}</div></a>
     </div>
     </div>
   </div><br>
@@ -55,8 +52,6 @@
     <div>
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
-
   </div>
-</div>
 <!------------------------------------------------------------------------------>
 

@@ -13,10 +13,10 @@ input{
   padding-left: 110px;
 }
 
-#commentsid{
+/*#commentsid{
   padding-left: 50px;
 
-}
+}*/
 
 h1{
   padding-left: 80px;
@@ -25,4 +25,9 @@ h1{
 
 strong{
   color: azure;
+}
+
+#date_color{
+  color: gray;
+
 }

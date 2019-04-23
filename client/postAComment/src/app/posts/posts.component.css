@@ -11,9 +11,15 @@ h2{
 }
 
 #post_size{
-  font-size: 40px;
+  font-size: 30px;
 }
 
 #padding{
   padding: 10px;
 }
+
+a:link{
+  text-decoration: none;
+
+}
+
