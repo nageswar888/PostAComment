@@ -3,7 +3,7 @@
     <div class="col-md-4"></div>
       <div class="col-md-6" id="post_name">
         <div *ngIf="postings">
-          <div><b>{{postings[0].postedBy}}</b></div>
+          <div><small><strong>posted by- </strong> </small><b>{{postings[0].postedBy}}</b></div>
           <div>{{postings[0].createdAt|date:'short'}}</div>
         <h1>{{postings[0].text}}</h1>
         </div>
@@ -16,7 +16,7 @@
     <div>
       <button type="button" class="btn btn-primary" (click)="add_comment()"><i class="far fa-comment-alt"></i> Add Comment</button>&nbsp;
       <button type="button" class="btn btn-primary" (click)="post_likes()">
-        <div *ngIf="likes">{{likes.length}} <i class="far fa-thumbs-up"></i> Like </div></button>
+        <div *ngIf="likes">{{likes.length}} <i class="far fa-thumbs-up"></i></div></button>
     </div>
   </div>
 

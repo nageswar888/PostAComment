@@ -16,6 +16,7 @@ export class PostsComponent implements OnInit {
   public flag: boolean;
   public submitted: boolean;
   public formdata: any;
+  public reverse: any;
 
   constructor(private service: PostService,
               private fb: FormBuilder) { }
@@ -36,7 +37,8 @@ export class PostsComponent implements OnInit {
   getpost() {
     this.service.getPost().subscribe((response) => {
       console.log(response);
-      this.postings = response.rows;
+      this.reverse = response.rows;
+      this.postings = this.reverse.reverse()
     })
   }
 
