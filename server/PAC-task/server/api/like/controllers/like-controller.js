@@ -21,5 +21,12 @@ export class likeController {
       .then(like => res.status(200).json(like))
       .catch(error => res.status(400).json(error));
   }
+
+  static delete(req, res) {
+    let paramet = req.params.id
+    likeDao.delete(paramet)
+      .then(like => res.status(200).json(like))
+      .catch(error => res.status(400).json(error));
+  }
 }
 

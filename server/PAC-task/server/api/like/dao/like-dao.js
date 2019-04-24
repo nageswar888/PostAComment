@@ -44,4 +44,16 @@ export class likeDao {
         });
     });
   }
+
+  static delete(paramet) {
+    return new Promise((resolve, reject) => {
+      models.Likes.destroy({where:{id: paramet}})
+        .then(like => {
+          resolve(like);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
 }

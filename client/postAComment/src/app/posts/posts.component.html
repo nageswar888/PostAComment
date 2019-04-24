@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-md-10"></div>
   <div class="col-md-2">
-  <button type="button" class="btn btn-primary" (click)="form()"><i class="far fa-clipboard"></i>&nbsp;<b>Add Post</b></button><br><br>
+  <button type="button" class="btn btn-primary" (click)="display_form()"><i class="far fa-clipboard"></i>&nbsp;<b>Add Post</b></button><br><br>
   </div>
   </div>
   <!--adding a post-->
@@ -39,7 +39,7 @@
 <!--posts-->
   <div class="col-md-4"></div>
   <div>
-  <div *ngFor="let post of postings | paginate: { itemsPerPage: 3, currentPage: p }"><hr>
+  <div *ngFor="let post of postings.reverse() | paginate: { itemsPerPage: 3, currentPage: p }"><hr>
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-10" (click)="navigate(post.id)"><b>{{post.postedBy}}</b>

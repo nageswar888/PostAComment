@@ -12,11 +12,10 @@ export class PostsComponent implements OnInit {
 
   public complexForm : FormGroup;
 
-  public postings: any;
+  public postings: any = [];
   public flag: boolean;
   public submitted: boolean;
   public formdata: any;
-  public reverse: any;
 
   constructor(private service: PostService,
               private fb: FormBuilder,
@@ -38,12 +37,11 @@ export class PostsComponent implements OnInit {
   getpost() {
     this.service.getPost().subscribe((response) => {
       console.log(response);
-      this.reverse = response.rows;
-      this.postings = this.reverse.reverse()
+      this.postings = response.rows;
     })
   }
 
-  form(){
+  display_form(){
     this.flag=true
   }
 
@@ -55,7 +53,8 @@ export class PostsComponent implements OnInit {
     }
     else{
       this.createPost(this.formdata)
-      location.reload();
+      this.flag=false
+      // location.reload();
     }
 
   }
@@ -63,9 +62,14 @@ export class PostsComponent implements OnInit {
 
   createPost(formdata){
     //console.log("------------------",formdata)
-    this.service.createPost(formdata).subscribe(users=>{
-      console.log(users);
-    });
+    let user: any;
+    this.service.createPost(formdata).subscribe(data=>{
+      user = data;
+    },
+      ()=> {},
+      () => {
+      this.postings.push(user);
+      });
   }
 
   navigate(value){

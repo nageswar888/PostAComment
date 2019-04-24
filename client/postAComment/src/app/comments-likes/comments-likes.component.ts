@@ -22,7 +22,7 @@ export class CommentsLikesComponent implements OnInit {
   flag= false;
   id: number;
   private sub: any;
-  public comments: any;
+  public comments: any =[];
   public likes: any;
   public postings: any;
   public submitted: boolean;
@@ -35,9 +35,9 @@ export class CommentsLikesComponent implements OnInit {
               private service: PostService,
               private fb: FormBuilder,
               private Router: Router) { }
-              
 
-  add_comment(){
+
+  display_form(){
     this.flag= true
   }
 
@@ -47,7 +47,7 @@ export class CommentsLikesComponent implements OnInit {
     this.getLikes(this.id);
     this.getPostInComt(this.id)
 
-    //console.log("22222222222222  ",this.id)
+    //console.log("------",this.id)
 
     this.complexForm = this.fb.group({
       'text' : [null, Validators.required],
@@ -82,12 +82,14 @@ export class CommentsLikesComponent implements OnInit {
   }
 
   post_likes(){
+    let data
     console.log("--------",this.id)
     let params = this.id
     this.likeservice.postLike(params).subscribe((responce) => {
-      console.log(responce)
-    })
-    location.reload();
+      data = responce
+    }, () =>{},
+      () => { this.likes.push(data)})
+    //location.reload();
   }
 
   getPostInComt(id) {
@@ -106,16 +108,20 @@ export class CommentsLikesComponent implements OnInit {
     }
     else{
       this.createComment(this.formdata)
-      location.reload()
+      this.flag= false   //for disappiaring of form
+      //location.reload()
     }
 
     }
 
   createComment(formdata){
+    let data
   //console.log("------------------",formdata)
   this.cservice.createComment(formdata).subscribe(users=>{
   console.log(users);
-  });
+  data = users
+  }, () =>{},
+    () =>{ this.comments.push(data)});
   }
 
 
