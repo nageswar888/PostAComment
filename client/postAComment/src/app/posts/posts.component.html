@@ -10,8 +10,8 @@
 <div class="row">
   <div class="col-md-4"></div>
   <div class="col-md-3" >
-  <div *ngIf="flag">
-  <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
+   <div *ngIf="flag">
+   <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
     <div class="form-group">
       <input type="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" placeholder="Enter Post"/>
       <div *ngIf="submitted && !!f.text.errors" class="invalid-feedback">
