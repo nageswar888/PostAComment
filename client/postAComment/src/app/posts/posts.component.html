@@ -42,11 +42,11 @@
   <div *ngFor="let post of postings.reverse() | paginate: { itemsPerPage: 3, currentPage: p }"><hr>
     <div class="row">
       <div class="col-md-2"></div>
-      <div class="col-md-10" (click)="navigate(post.id)"><b>{{post.postedBy}}</b>
+      <div class="col-md-10"><b>{{post.postedBy}}</b>
 <!--
         <a [routerLink]="['/comments-likes', post.id]"><div id="post_size">{{post.text}}</div></a>
 -->
-        <div id="post">{{post.text}}</div>
+        <div><span id="post" (click)="navigate(post.id)">{{post.text}}</span></div>
     </div>
     </div>
   </div><br>

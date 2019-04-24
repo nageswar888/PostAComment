@@ -111,7 +111,6 @@ export class CommentsLikesComponent implements OnInit {
       this.flag= false   //for disappiaring of form
       //location.reload()
     }
-
     }
 
   createComment(formdata){
