@@ -1,27 +1,24 @@
-#post_name{
-  padding-top: 20px;
-}
 
-#c_head{
-  background-color: cadetblue;
-}
 input{
   width: 100%;
 }
-#spann{
-  padding-left: 110px;
-}
-
-#post_size{
-  font-size: 40px;
-  color: rebeccapurple;
-}
 
 strong{
-  color: azure;
+  color: #007bff;
 }
 
 #date_color{
   color: gray;
+}
 
+#post_color{
+  color: #007bff;
+}
+
+.jumbotron{
+  padding: 30px;
+}
+
+#posted_by{
+  color: darkgoldenrod;
 }

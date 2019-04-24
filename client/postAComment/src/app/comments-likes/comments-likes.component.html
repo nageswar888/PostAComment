@@ -1,17 +1,22 @@
-<div id="c_head">
-  <div class="row" >
-    <div class="col-md-4 "></div>
-      <div class="col-md-6 " id="post_name">
+
+<div class="jumbotron jumbotron-fluid  padd">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body">
+      <div class="row" >
+      <div class="col-md-12">
         <div *ngIf="postings">
-          <div><small><strong>posted by- </strong> </small><b>{{postings[0].postedBy}}</b></div>
+          <div><small><i>posted by- </i></small><b id="posted_by">{{postings[0].postedBy}}</b></div>
           <div>{{postings[0].createdAt|date:'short'}}</div>
-          <div id="post_size">{{postings[0].text}}</div><br>
+          <div id="post_color">&emsp;{{postings[0].text}}</div><br>
         </div>
       </div>
-    <div class="col-md-2"></div>
   </div>
 </div>
-<br>
+    </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-8"></div>
     <div>
@@ -24,7 +29,7 @@
 
   <div class="row">
     <div class="col-md-4"></div>
-    <div *ngIf="flag">
+    <div class="col-md-3" *ngIf="flag">
       <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
 
         <div class="form-group">
@@ -44,6 +49,7 @@
         <button type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>
+    <div class="col-md-5"></div>
   </div>
 
   <div>
@@ -59,8 +65,8 @@
       </div>
       <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-8">{{comment.text}}</div>
-        <div class="col-md-3" id="date_color">{{comment.createdAt|date}}</div>
+        <div class="col-md-9">{{comment.text}}</div>
+        <div class="col-md-2" id="date_color">{{comment.createdAt|date}}</div>
       </div>
     </div><br>
     <div>
