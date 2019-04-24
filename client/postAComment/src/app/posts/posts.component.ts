@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../post.service';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -19,7 +19,8 @@ export class PostsComponent implements OnInit {
   public reverse: any;
 
   constructor(private service: PostService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private Routes:Router) { }
 
   ngOnInit() {
     this.getpost()
@@ -67,5 +68,9 @@ export class PostsComponent implements OnInit {
     });
   }
 
+  navigate(value){
+    this.Routes.navigate(['/comments-likes', value])
+    console.log(value)
+  }
 
 }

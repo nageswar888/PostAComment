@@ -1,15 +1,16 @@
-
-  <div class="row" id="c_head">
-    <div class="col-md-4"></div>
-      <div class="col-md-6" id="post_name">
+<div id="c_head">
+  <div class="row" >
+    <div class="col-md-4 "></div>
+      <div class="col-md-6 " id="post_name">
         <div *ngIf="postings">
           <div><small><strong>posted by- </strong> </small><b>{{postings[0].postedBy}}</b></div>
           <div>{{postings[0].createdAt|date:'short'}}</div>
-        <h1>{{postings[0].text}}</h1>
+          <div id="post_size">{{postings[0].text}}</div><br>
         </div>
       </div>
+    <div class="col-md-2"></div>
   </div>
-
+</div>
 <br>
   <div class="row">
     <div class="col-md-8"></div>

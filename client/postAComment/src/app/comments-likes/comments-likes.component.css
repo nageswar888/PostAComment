@@ -1,6 +1,5 @@
 #post_name{
-  height: 200px;
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 #c_head{
@@ -13,14 +12,9 @@ input{
   padding-left: 110px;
 }
 
-/*#commentsid{
-  padding-left: 50px;
-
-}*/
-
-h1{
-  padding-left: 80px;
-  color: purple;
+#post_size{
+  font-size: 40px;
+  color: rebeccapurple;
 }
 
 strong{

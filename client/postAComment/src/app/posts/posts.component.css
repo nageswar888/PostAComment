@@ -10,8 +10,10 @@ h2{
   font-weight: bold;
 }
 
-#post_size{
+#post{
   font-size: 30px;
+  color: #007bff;
+  cursor: pointer;
 }
 
 #padding{

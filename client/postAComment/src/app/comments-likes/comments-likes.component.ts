@@ -69,14 +69,12 @@ export class CommentsLikesComponent implements OnInit {
     //console.log("id in get comments-------",id)
     this.cservice.getComments(id).subscribe((response) => {
       this.comments = response;
-
       //console.log("comments responce-----------",this.comments);
     })
   }
 
   getLikes(id) {
     //console.log("id in get Likes-------",id)
-
     this.likeservice.getLikes(id).subscribe((response) => {
       this.likes= response
       //console.log("----------",this.likes)
