@@ -47,8 +47,6 @@ export class CommentsLikesComponent implements OnInit {
     this.getLikes(this.id);
     this.getPostInComt(this.id)
 
-    //console.log("------",this.id)
-
     this.complexForm = this.fb.group({
       'text' : [null, Validators.required],
       'commentedBy': [null,  Validators.required],
@@ -66,18 +64,14 @@ export class CommentsLikesComponent implements OnInit {
   }
 
   getComments(id) {
-    //console.log("id in get comments-------",id)
     this.cservice.getComments(id).subscribe((response) => {
       this.comments = response;
-      //console.log("comments responce-----------",this.comments);
     })
   }
 
   getLikes(id) {
-    //console.log("id in get Likes-------",id)
     this.likeservice.getLikes(id).subscribe((response) => {
       this.likes= response
-      //console.log("----------",this.likes)
     })
   }
 
@@ -94,7 +88,6 @@ export class CommentsLikesComponent implements OnInit {
 
   getPostInComt(id) {
     this.service.getPostInComt(id).subscribe((response) => {
-      //console.log(response);
       this.postings = response;
     })
   }
@@ -115,7 +108,6 @@ export class CommentsLikesComponent implements OnInit {
 
   createComment(formdata){
     let data
-  //console.log("------------------",formdata)
   this.cservice.createComment(formdata).subscribe(users=>{
   console.log(users);
   data = users
