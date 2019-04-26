@@ -36,7 +36,7 @@ export class PostsComponent implements OnInit {
 
   getpost() {
     this.service.getPost().subscribe((response) => {
-      console.log(response);
+      //console.log(response);
       this.postings = response.rows;
     })
   }
