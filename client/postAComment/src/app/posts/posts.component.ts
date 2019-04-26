@@ -61,7 +61,6 @@ export class PostsComponent implements OnInit {
 
 
   createPost(formdata){
-    //console.log("------------------",formdata)
     let user: any;
     this.service.createPost(formdata).subscribe(data=>{
       user = data;
