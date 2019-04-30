@@ -8,8 +8,10 @@ import { AppRoutingModule } from './/app-routing.module';
 //import {PostService} from "./post.service";
 import {HttpClientModule} from "@angular/common/http";
 import {QueryApi} from "./commonservice/request/QueryApi";
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {FilterPipeModule} from "ngx-filter-pipe";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FilterPipeModule,
+    FormsModule
   ],
   providers: [/*PostService*/,QueryApi],
   bootstrap: [AppComponent]

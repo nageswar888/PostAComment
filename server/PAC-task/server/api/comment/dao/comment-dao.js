@@ -50,7 +50,7 @@ export class commentDao {
 
   static deleteById(params) {
     return new Promise((resolve, reject) => {
-      models.Comment.destroy({where: {id: params}})
+      models.Comment.destroy({where: {postId: params}})
         .then(comment => {
           resolve(comment);
         })

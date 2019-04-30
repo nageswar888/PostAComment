@@ -3,8 +3,7 @@ import {CommentsLikesService} from '../comments-likes.service';
 import {LikesService} from '../likes.service';
 import { ActivatedRoute } from '@angular/router';
 import {PostService} from '../post.service';
-import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import {Router} from '@angular/router';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 
 @Component({
@@ -14,14 +13,15 @@ import {Router} from '@angular/router';
 })
 export class CommentsLikesComponent implements OnInit {
 
-  p: number = 1;
-  collection: any[]/* = someArrayOfThings*/;
+
 
   public complexForm : FormGroup;
 
-  flag= false;
-  id: number;
+  public flag= false;
+  public id: number;
   private sub: any;
+  public p: number = 1;
+  public collection: any[]
   public comments: any =[];
   public likes: any;
   public postings: any;
@@ -33,8 +33,7 @@ export class CommentsLikesComponent implements OnInit {
               private likeservice: LikesService,
               private route: ActivatedRoute,
               private service: PostService,
-              private fb: FormBuilder,
-              private Router: Router) { }
+              private fb: FormBuilder) { }
 
 
   display_form(){
@@ -102,7 +101,6 @@ export class CommentsLikesComponent implements OnInit {
     else{
       this.createComment(this.formdata)
       this.flag= false   //for disappiaring of form
-      //location.reload()
     }
     }
 

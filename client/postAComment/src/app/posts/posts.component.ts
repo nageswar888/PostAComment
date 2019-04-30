@@ -12,6 +12,8 @@ export class PostsComponent implements OnInit {
 
   public complexForm : FormGroup;
 
+  userFilter: any
+
   public postings: any = [];
   public flag: boolean;
   public submitted: boolean;
@@ -54,7 +56,6 @@ export class PostsComponent implements OnInit {
     else{
       this.createPost(this.formdata)
       this.flag=false
-      // location.reload();
     }
 
   }

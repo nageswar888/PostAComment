@@ -47,7 +47,7 @@ export class likeDao {
 
   static delete(paramet) {
     return new Promise((resolve, reject) => {
-      models.Likes.destroy({where:{id: paramet}})
+      models.Likes.destroy({where:{postId: paramet}})
         .then(like => {
           resolve(like);
         })
