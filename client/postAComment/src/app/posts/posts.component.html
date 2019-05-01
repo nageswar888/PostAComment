@@ -1,9 +1,11 @@
-<br>
+<div class="container-fluid">
+
+<input type="text" [(ngModel)]="userFilter.text" placeholder="search">
 
 <div class="row">
   <div class="col-md-10"></div>
   <div class="col-md-2">
-    <button type="button" class="btn btn-primary" (click)="display_form()"><i class="far fa-clipboard"></i>&nbsp;<b>Add Post</b></button><br><br>
+    <button type="button" class="btn btn-primary" (click)="display_form()"><i class="far fa-clipboard"></i>&nbsp;<b>Add Post</b></button><br>
   </div>
 </div>
 
@@ -40,7 +42,7 @@
 <!--posts-->
   <div class="col-md-4"></div>
   <div>
-  <div *ngFor="let post of postings.reverse()  | paginate: { itemsPerPage: 3, currentPage: p }"><hr>
+  <div *ngFor="let post of postings.reverse() | filterBy: userFilter | paginate: { itemsPerPage: 4, currentPage: p }"><hr>
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-10"><b>{{post.postedBy}}</b>
@@ -51,9 +53,12 @@
     </div>
     </div>
   </div><br>
-
-    <div>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-8">
+      <div id="message" *ngIf="(postings | filterBy: userFilter).length === 0">No matching post found</div><br>
+       <div><pagination-controls (pageChange)="p = $event"></pagination-controls></div>
+      </div>
     </div>
-  </div>
-
+    </div>
+</div>
