@@ -100,7 +100,8 @@ export class CommentsLikesComponent implements OnInit {
     }
     else{
       this.createComment(this.formdata)
-      this.flag= false   //for disappiaring of form
+      this.flag= false    //for disappiaring of form
+      //this.complexForm.reset()
     }
     }
 

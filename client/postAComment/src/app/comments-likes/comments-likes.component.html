@@ -1,5 +1,4 @@
 
-
 <div class="jumbotron jumbotron-fluid  padd">
   <div class="container-fluid">
     <div class="card">
@@ -28,19 +27,18 @@
       <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
 
         <div class="form-group">
-          <input type="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" placeholder="Enter comment"/>
-          <div *ngIf="submitted && !!f.text.errors" class="invalid-feedback">
-            <div *ngIf="!!f.text.errors.required">text is required</div>
-          </div>
-        </div>
-
-        <div class="form-group">
           <input type="text" formControlName="commentedBy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.commentedBy.errors }" placeholder="User"/>
           <div *ngIf="submitted && !!f.commentedBy.errors" class="invalid-feedback">
             <div *ngIf="!!f.commentedBy.errors.required">User name is required</div>
           </div>
         </div>
 
+        <div class="form-group">
+          <textarea type="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" placeholder="Enter comment"></textarea>
+          <div *ngIf="submitted && !!f.text.errors" class="invalid-feedback">
+            <div *ngIf="!!f.text.errors.required">text is required</div>
+          </div>
+        </div>
         <button type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>

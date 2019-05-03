@@ -22,7 +22,7 @@ export class PostService {
   }
 
   getPostInComt(params):Observable<any>{
-    console.log("calling api")
+    //console.log("calling api")
     return this.queryApi.doGet('POST',params)
       .pipe(
         catchError(err => of([err]))
@@ -30,7 +30,7 @@ export class PostService {
   }
 
   createPost(params):Observable<any>{
-    console.log("object in service-----",params)
+    //console.log("object in service-----",params)
     return this.queryApi.doPost('POSTSPOST',params)
       .pipe(
         catchError(err => of([err]))

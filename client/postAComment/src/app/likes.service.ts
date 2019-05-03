@@ -13,7 +13,7 @@ export class LikesService {
   constructor(private http: HttpClient, private queryApi:QueryApi) { }
 
   getLikes(params):Observable<any>{
-    console.log("calling api")
+    //console.log("calling api")
     return this.queryApi.doGet('LIKE',params)
       .pipe(
         catchError(err => of([err]))

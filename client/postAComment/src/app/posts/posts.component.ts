@@ -60,7 +60,6 @@ export class PostsComponent implements OnInit {
 
   }
 
-
   createPost(formdata){
     let user: any;
     this.service.createPost(formdata).subscribe(data=>{
@@ -74,7 +73,7 @@ export class PostsComponent implements OnInit {
 
   navigate(value){
     this.Routes.navigate(['/comments-likes', value])
-    console.log(value)
+    //console.log(value)
   }
 
 }
