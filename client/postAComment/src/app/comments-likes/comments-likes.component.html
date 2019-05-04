@@ -7,6 +7,7 @@
       <div class="col-md-12">
         <div *ngIf="postings">
           <div><small><i>posted by- </i></small><b id="posted_by">{{postings[0].postedBy}}</b></div>
+          <div><small><i>Title- </i></small>{{postings[0].title}}</div>
           <div>{{postings[0].createdAt|date:'short'}}</div>
           <div id="post_color">&emsp;{{postings[0].text}}</div>
         </div>

@@ -26,7 +26,8 @@ export class postDao {
     return new Promise((resolve, reject) => {
       models.Post.create({
         text: _body.text,
-        postedBy: _body.postedBy
+        postedBy: _body.postedBy,
+        title: _body.title
       }).then(branch => {
         resolve(branch);
       })

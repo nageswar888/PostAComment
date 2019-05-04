@@ -29,6 +29,7 @@ export class PostsComponent implements OnInit {
     this.complexForm = this.fb.group({
       'text' : [null, Validators.required],
       'postedBy': [null,  Validators.required],
+      'title': [null, Validators.required]
     });
 
     }
