@@ -4,7 +4,7 @@
       <div class="col-md-5"></div>
       <div class="col-md-3"><h3>Posts</h3></div>
       <div class="col-md-2">
-        <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.text" placeholder="search"></div>
+        <div></div>
       </div>
       <div class="col-md-2">
         <div><button type="button" class="btn " (click)="display_form()"><i class="far fa-clipboard"></i>&nbsp;<b>Add Post</b></button></div>
@@ -13,7 +13,15 @@
   </nav>
 
 <div class="container-fluid">
-
+  <div class="row">
+    <div class="col-md-2">
+      <br><div id="filter"><b>Filters</b></div>
+      <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.text" placeholder="search by post"></div><br>
+      <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.postedBy" placeholder="search by user"></div><br>
+      <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.createdAt" placeholder="search by date"></div><br>
+      <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.title" placeholder="search title"></div>
+    </div>
+    <div class="col-md-10">
   <!--adding a post-->
 <div class="row">
   <div class="col-md-4"></div>
@@ -71,4 +79,6 @@
       </div>
     </div>
     </div>
+</div>
+</div>
 </div>

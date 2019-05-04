@@ -12,7 +12,7 @@ export class PostsComponent implements OnInit {
 
   public complexForm : FormGroup;
 
-  userFilter: any = { text: '',postedBy: ''}
+  userFilter: any = { text: '',postedBy: '', createdAt: '', title: ''}
 
   public postings: any = [];
   public flag: boolean;
