@@ -8,8 +8,9 @@ export class QueryApi {
 
   doGet(url: string,  params: any) {
     url = UserEndPoint(url,params);
-    console.log(url)
-    return this.http.get(url, params);
+   // console.log("in query Api",url)
+   // console.log("in query Api",params)
+    return this.http.get(url, {params});
   }
 
   doPost(url: any, params: any) {

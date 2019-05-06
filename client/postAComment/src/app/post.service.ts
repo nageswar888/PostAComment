@@ -13,9 +13,8 @@ export class PostService {
 
   constructor(private http: HttpClient, private queryApi:QueryApi) { }
 
-  getPost():Observable<any>{
-    let params
-    console.log("--------",params)
+  getPost(params):Observable<any>{
+    //let params
     return this.queryApi.doGet('POST',params)
       .pipe(
         catchError(err => of([err]))
@@ -24,7 +23,7 @@ export class PostService {
 
   getPostInComt(params):Observable<any>{
     //console.log("calling api")
-    return this.queryApi.doGet('POST',params)
+    return this.queryApi.doGet('POSTBYID',params)
       .pipe(
         catchError(err => of([err]))
       );

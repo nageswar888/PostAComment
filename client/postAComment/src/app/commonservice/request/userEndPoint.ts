@@ -5,7 +5,7 @@ export const LIKE = 'LIKE';
 export const COMMENTPOST = 'COMMENTPOST';
 export const LIKEPOST = 'LIKEPOST';
 export const POSTSPOST = 'POSTSPOST';
-
+export const POSTBYID = 'POSTBYID'
 
 export const UserEndPoint = (type:string,params:any)=> {
 
@@ -13,13 +13,17 @@ export const UserEndPoint = (type:string,params:any)=> {
 
     case POST:
       let ActionPro = environment.API_ROOT + 'post';
-      if (typeof params != "undefined") {
+     /* if (typeof params != "undefined") {
         ActionPro += '/' + params;
         //console.log("ActionPro")
       } else {
         ActionPro = environment.API_ROOT + 'post';
-      }
+      }*/
       return ActionPro;
+
+    case POSTBYID:
+      return environment.API_ROOT + 'post/' + params;
+
 
     case COMMENT:
       return environment.API_ROOT + 'comment/' + params;

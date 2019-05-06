@@ -20,10 +20,11 @@ export class PostsComponent implements OnInit {
   public formdata: any;
 
 
-  p: number = 1;
-  pageNo: number=1;
-  itemsPerPage: number=3;
-  total:number;
+  public pageNo: number;
+  public itemsPPage: number=4;
+  public total:number;
+  public page: { pageNo: number; itemsPerPage: number };
+  public pageno: any=1;
 
   constructor(private service: PostService,
               private fb: FormBuilder,
@@ -37,7 +38,6 @@ export class PostsComponent implements OnInit {
       'postedBy': [null,  Validators.required],
       'title': [null, Validators.required]
     });
-
     }
 
   get f() { return this.complexForm.controls; }
@@ -45,29 +45,27 @@ export class PostsComponent implements OnInit {
 
   getpost() {
 
-   /* this.page={
-      pageNo:this.p,
-      itemsPerPage:3
-    };*/
-    this.service.getPost().subscribe((response) => {
-      console.log(response);
+    this.page={
+      pageNo:this.pageno,
+      itemsPerPage:this.itemsPPage
+    };
+    this.service.getPost( this.page).subscribe((response) => {
       this.postings = response.rows;
+      this.total = response.count
     })
   }
 
-  /*getPage(data){
-    this.p=data;
-    console.log(this.p);
-    this.page={
-      pageNo:this.p,
-      itemsPerPage:3
-    };
+  getPagination(pageNumber){
 
+    this.pageno=pageNumber;
+    this.page={
+      pageNo:this.pageno,
+      itemsPerPage:this.itemsPPage
+    };
     this.service.getPost(this.page).subscribe(response =>{
       this.postings = response.rows;
-      }
-    )
-  }*/
+      })
+  }
 
   display_form(){
     this.flag=true
@@ -83,7 +81,6 @@ export class PostsComponent implements OnInit {
       this.createPost(this.formdata)
       this.flag=false
     }
-
   }
 
   createPost(formdata){
@@ -93,7 +90,7 @@ export class PostsComponent implements OnInit {
     },
       ()=> {},
       () => {
-      this.postings.push(user);
+      this.postings.unshift(user);
       });
   }
 
@@ -103,8 +100,3 @@ export class PostsComponent implements OnInit {
   }
 
 }
-
-/*export class Paginate {
-  pageNo: number=1;
-  itemsPerPage:number;
-}*/

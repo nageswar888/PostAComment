@@ -4,45 +4,41 @@ import Promise from 'bluebird';
 export class postDao {
 
 
-   /*static getAll(limit,offset) {
-     console.log("-----")
-     return new Promise((resolve, reject) => {
-       models.Post.findAndCountAll()
-         .then(post => {
-/!*           let page = offset;      // page number
-           let pages = Math.ceil(post.count / limit);
-           let offset1 = limit * (page - 1);*!/
-console.log(limit);
-console.log(offset);
+  static getAll(pageData,limit) {
+    return new Promise((resolve, reject) => {
+      models.Post.findAndCountAll()
+        .then(data=>{
+            let page = pageData;      // page number
+          console.log("----",page)
+            let pages = Math.ceil(data.count / limit);
+            let offset = limit * (page - 1);
 
-           models.Post.findAll({
-             limit: limit,
-             offset: offset,
-             order: [
-               ['createdAt', 'DESC']]
-           }).then(result =>{
-             resolve(result);
-           }).catch(err =>{
-             reject(err);
-           });
-
-         })
-
-           })
-         .catch(error => {
-           reject(error);
-         });
-     }*/
+            models.Post.findAndCountAll({
+              limit: limit,
+              offset: offset,
+              order: [
+                ['createdAt', 'DESC']
+              ]
+            }).then(result =>{
+              resolve(result);
+            }).catch(err =>{
+                reject(err);
+              });
+          }).catch(error=>{
+          reject(error);
+        })
+    })
+  }
 
 
-   static getAll() {
+   /*static getAll() {
     return new Promise((resolve, reject) =>{
       models.Post.findAndCountAll()
         .then(branch => { resolve(branch); })
         .catch(error =>{ reject(error)})
     })
   }
-
+*/
   static createNew(_body) {
     return new Promise((resolve, reject) => {
       models.Post.create({
