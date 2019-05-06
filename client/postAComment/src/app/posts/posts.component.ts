@@ -44,7 +44,6 @@ export class PostsComponent implements OnInit {
 
 
   getpost() {
-
     this.page={
       pageNo:this.pageno,
       itemsPerPage:this.itemsPPage
