@@ -15,6 +15,7 @@ export class PostService {
 
   getPost():Observable<any>{
     let params
+    console.log("--------",params)
     return this.queryApi.doGet('POST',params)
       .pipe(
         catchError(err => of([err]))

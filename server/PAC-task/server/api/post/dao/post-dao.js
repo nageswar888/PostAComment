@@ -2,25 +2,46 @@ import models from '../../../models';
 import Promise from 'bluebird';
 
 export class postDao {
-  static getAll() {
-    return new Promise((resolve, reject) => {
-      models.Post.findAndCountAll()
-        .then(post => {
-          resolve(post);
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
-  }
 
-  /* static getAll() {
+
+   /*static getAll(limit,offset) {
+     console.log("-----")
+     return new Promise((resolve, reject) => {
+       models.Post.findAndCountAll()
+         .then(post => {
+/!*           let page = offset;      // page number
+           let pages = Math.ceil(post.count / limit);
+           let offset1 = limit * (page - 1);*!/
+console.log(limit);
+console.log(offset);
+
+           models.Post.findAll({
+             limit: limit,
+             offset: offset,
+             order: [
+               ['createdAt', 'DESC']]
+           }).then(result =>{
+             resolve(result);
+           }).catch(err =>{
+             reject(err);
+           });
+
+         })
+
+           })
+         .catch(error => {
+           reject(error);
+         });
+     }*/
+
+
+   static getAll() {
     return new Promise((resolve, reject) =>{
-      models.Post.findAll({include:{ model: models.likes}})
+      models.Post.findAndCountAll()
         .then(branch => { resolve(branch); })
         .catch(error =>{ reject(error)})
     })
-  }*/
+  }
 
   static createNew(_body) {
     return new Promise((resolve, reject) => {

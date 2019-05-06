@@ -19,6 +19,12 @@ export class PostsComponent implements OnInit {
   public submitted: boolean;
   public formdata: any;
 
+
+  p: number = 1;
+  pageNo: number=1;
+  itemsPerPage: number=3;
+  total:number;
+
   constructor(private service: PostService,
               private fb: FormBuilder,
               private Routes:Router) { }
@@ -38,11 +44,30 @@ export class PostsComponent implements OnInit {
 
 
   getpost() {
+
+   /* this.page={
+      pageNo:this.p,
+      itemsPerPage:3
+    };*/
     this.service.getPost().subscribe((response) => {
-      //console.log(response);
+      console.log(response);
       this.postings = response.rows;
     })
   }
+
+  /*getPage(data){
+    this.p=data;
+    console.log(this.p);
+    this.page={
+      pageNo:this.p,
+      itemsPerPage:3
+    };
+
+    this.service.getPost(this.page).subscribe(response =>{
+      this.postings = response.rows;
+      }
+    )
+  }*/
 
   display_form(){
     this.flag=true
@@ -78,3 +103,8 @@ export class PostsComponent implements OnInit {
   }
 
 }
+
+/*export class Paginate {
+  pageNo: number=1;
+  itemsPerPage:number;
+}*/

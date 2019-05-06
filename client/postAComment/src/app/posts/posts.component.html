@@ -18,7 +18,7 @@
       <br><div id="filter"><b>Filters</b></div>
       <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.text" placeholder="search by post"></div><br>
       <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.postedBy" placeholder="search by user"></div><br>
-      <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.createdAt" placeholder="search by date"></div><br>
+      <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.createdAt" placeholder="search by date(Y-M-D)"></div><br>
       <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.title" placeholder="search title"></div>
     </div>
     <div class="col-md-10">
@@ -60,7 +60,7 @@
 <!--posts-->
   <div class="col-md-4"></div>
   <div>
-  <div *ngFor="let post of postings.reverse() | filterBy: userFilter | paginate: { itemsPerPage: 4, currentPage: p }"><hr>
+  <div *ngFor="let post of postings | filterBy: userFilter | paginate: {itemsPerPage: 5, currentPage: p, totalItems:total}"><hr>
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-10"><b>{{post.postedBy}}</b>
@@ -75,7 +75,8 @@
       <div class="col-md-4"></div>
       <div class="col-md-8">
       <div id="message" *ngIf="(postings | filterBy: userFilter).length === 0">No matching post found</div><br>
-       <div><pagination-controls (pageChange)="p = $event"></pagination-controls></div>
+       <div><pagination-controls (pageChange)="p = $event"></pagination-controls>
+       </div>
       </div>
     </div>
     </div>
