@@ -20,8 +20,11 @@
       <br><div id="filter"><b>Filters</b></div>
       <div><input type="text" aria-label="Search" [(ngModel)]="userFilter.text" placeholder=" search by post"></div><br>
       <div><input type="text" aria-label="Search" [(ngModel)]="userFilter.postedBy" placeholder=" search by user"></div><br>
+<!--
       <div><input type="text" aria-label="Search" [(ngModel)]="userFilter.createdAt" placeholder=" search by date(Y-M-D)"></div><br>
-      <div><input type="text" aria-label="Search" [(ngModel)]="userFilter.title" placeholder=" search by title"></div>
+-->
+      <div><input type="text" aria-label="Search" [(ngModel)]="userFilter.title" placeholder=" search by title"></div><br>
+      <div><input type="date" aria-label="Search" [(ngModel)]="userFilter.createdAt" placeholder=" search by date"></div>
     </div>
 
     <div class="col-md-10">
@@ -41,16 +44,18 @@
                 <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
 
                   <div class="form-group">
-                    <input type="text" formControlName="postedBy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.postedBy.errors }" placeholder="User"/>
+                    <input type="text" formControlName="postedBy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.postedBy.errors }" placeholder="User" />
                     <div *ngIf="submitted && !!f.postedBy.errors" class="invalid-feedback">
-                      <div *ngIf="!!f.postedBy.errors.required">User is required</div>
+                     <div *ngIf="!!f.postedBy.errors.required">User is required</div>
+                     <div *ngIf="!!f.postedBy.errors.pattern">User must be valid</div>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" placeholder="Title"/>
+                    <input type="text" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" placeholder="Enter Title" >
                     <div *ngIf="submitted && !!f.title.errors" class="invalid-feedback">
                       <div *ngIf="!!f.title.errors.required">title is required</div>
+                      <div *ngIf="!!f.title.errors.pattern">title is not valid</div>
                     </div>
                   </div>
 
@@ -58,6 +63,7 @@
                     <textarea formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" placeholder="Enter Post"></textarea>
                     <div *ngIf="submitted && !!f.text.errors" class="invalid-feedback">
                       <div *ngIf="!!f.text.errors.required">post is required</div>
+                      <div *ngIf="!!f.text.errors.pattern">post is not valid</div>
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary">Add</button>

@@ -34,9 +34,9 @@ export class PostsComponent implements OnInit {
     this.getpost()
 
     this.complexForm = this.fb.group({
-      'text' : [null, Validators.required],
-      'postedBy': [null,  Validators.required],
-      'title': [null, Validators.required]
+      'postedBy': [null,  [Validators.required,Validators.pattern(/^[^-\s][a-zA-Z0-9_\s-]+$/)]], //if we put double quotes then / is not required
+      'title': [null, [Validators.required,Validators.pattern("^[^-\\s][a-zA-Z0-9_\\s-]+$")]],
+      'text': [null, [Validators.required,,Validators.pattern("^[^-\\s][a-zA-Z0-9_\\s-]+$")]]
     });
     }
 

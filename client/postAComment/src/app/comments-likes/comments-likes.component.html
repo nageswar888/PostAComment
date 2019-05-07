@@ -44,7 +44,7 @@
             <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
 
               <div class="form-group">
-                <input type="email" formControlName="commentedBy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.commentedBy.errors }" placeholder="User"/>
+                <input type="text" formControlName="commentedBy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.commentedBy.errors }" placeholder="User"/>
                 <div *ngIf="submitted && !!f.commentedBy.errors" class="invalid-feedback">
                   <div *ngIf="!!f.commentedBy.errors.required">User is required</div>
                   <div *ngIf="!!f.commentedBy.errors.pattern">User must be valid</div>
@@ -55,7 +55,7 @@
                 <textarea type="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" placeholder="Enter comment"></textarea>
                 <div *ngIf="submitted && !!f.text.errors" class="invalid-feedback">
                   <div *ngIf="!!f.text.errors.required">text is required</div>
-                  <div *ngIf="!!f.text.errors.pattern">text must be valid</div>
+                  <div *ngIf="!!f.text.errors.pattern">text is not valid</div>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">Add</button>

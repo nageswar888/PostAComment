@@ -47,8 +47,8 @@ export class CommentsLikesComponent implements OnInit {
     this.getPostInComt(this.id)
 
     this.complexForm = this.fb.group({
-      'text': [null, Validators.required],
-      'commentedBy': [null,  Validators.required],
+      'text': [null, [Validators.required, Validators.pattern(/^[^-\s][a-zA-Z0-9_\s-]+$/)]],
+      'commentedBy': [null, [Validators.required,Validators.pattern("^[^-\\s][a-zA-Z0-9_\\s-]+$")]], //if we put double quotes then / is not required
       'postId':[this.id]
     });
   }
