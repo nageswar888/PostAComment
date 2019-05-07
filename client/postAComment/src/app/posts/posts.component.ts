@@ -66,8 +66,8 @@ export class PostsComponent implements OnInit {
       })
   }
 
-  display_form(){
-    this.flag=true
+  reset(data){
+    data.reset()
   }
 
   submit(value){

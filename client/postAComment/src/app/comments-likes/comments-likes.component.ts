@@ -36,8 +36,8 @@ export class CommentsLikesComponent implements OnInit {
               private fb: FormBuilder) { }
 
 
-  display_form(){
-    this.flag= true
+  reset(data){
+   data.reset()
   }
 
   ngOnInit() {
@@ -47,7 +47,7 @@ export class CommentsLikesComponent implements OnInit {
     this.getPostInComt(this.id)
 
     this.complexForm = this.fb.group({
-      'text' : [null, Validators.required],
+      'text': [null, Validators.required],
       'commentedBy': [null,  Validators.required],
       'postId':[this.id]
     });

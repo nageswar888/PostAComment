@@ -22,3 +22,7 @@ h3{
  #filter{
    color: brown;
  }
+
+.mycontent-left {
+  border-right: 1px solid #333;
+}

@@ -12,14 +12,12 @@ import { ReactiveFormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FilterPipeModule} from "ngx-filter-pipe";
 import {FormsModule} from "@angular/forms";
-import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
     CommentsLikesComponent,
-    PaginationComponent
   ],
   imports: [
     BrowserModule,

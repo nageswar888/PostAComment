@@ -7,13 +7,18 @@
       <div class="col-md-12">
         <div *ngIf="postings">
           <div><small><i>posted by- </i></small><b id="posted_by">{{postings[0].postedBy}}</b></div>
-          <div><small><i>Title- </i></small>{{postings[0].title}}</div>
+          <div><small><i>Title- </i></small><b id="title-color">{{postings[0].title}}</b></div>
           <div>{{postings[0].createdAt|date:'short'}}</div>
           <div id="post_color">&emsp;{{postings[0].text}}</div>
         </div>
         <div>
           <button type="button" class="btn text-color" (click)="post_likes()"><i class="far fa-thumbs-up" ></i>&nbsp;<span *ngIf="likes">{{likes.length}}</span></button>&nbsp;
+<!--
           <button type="button" class="btn text-color" (click)="display_form()"><i class="far fa-comment-alt"></i> Add Comment</button>
+-->
+          <button type="button" class="btn" data-toggle="modal" data-target="#myModal" class="btn text-color">
+            <i class="far fa-comment-alt"></i> Add Comment
+          </button>
         </div>
       </div>
   </div>
@@ -21,29 +26,48 @@
     </div>
     </div>
   </div>
+
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-3" *ngIf="flag">
-      <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
 
-        <div class="form-group">
-          <input type="text" formControlName="commentedBy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.commentedBy.errors }" placeholder="User"/>
-          <div *ngIf="submitted && !!f.commentedBy.errors" class="invalid-feedback">
-            <div *ngIf="!!f.commentedBy.errors.required">User name is required</div>
+  <div class="container">
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Adding a comment</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
+
+              <div class="form-group">
+                <input type="email" formControlName="commentedBy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.commentedBy.errors }" placeholder="User"/>
+                <div *ngIf="submitted && !!f.commentedBy.errors" class="invalid-feedback">
+                  <div *ngIf="!!f.commentedBy.errors.required">User is required</div>
+                  <div *ngIf="!!f.commentedBy.errors.pattern">User must be valid</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <textarea type="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" placeholder="Enter comment"></textarea>
+                <div *ngIf="submitted && !!f.text.errors" class="invalid-feedback">
+                  <div *ngIf="!!f.text.errors.required">text is required</div>
+                  <div *ngIf="!!f.text.errors.pattern">text must be valid</div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close modal</button>
           </div>
         </div>
-
-        <div class="form-group">
-          <textarea type="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" placeholder="Enter comment"></textarea>
-          <div *ngIf="submitted && !!f.text.errors" class="invalid-feedback">
-            <div *ngIf="!!f.text.errors.required">text is required</div>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Add</button>
-      </form>
+      </div>
     </div>
-    <div class="col-md-5"></div>
   </div>
 
   <div>
