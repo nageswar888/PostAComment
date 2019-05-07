@@ -35,11 +35,6 @@ export class CommentsLikesComponent implements OnInit {
               private service: PostService,
               private fb: FormBuilder) { }
 
-
-  reset(data){
-   data.reset()
-  }
-
   ngOnInit() {
     this.getting_id()
     this.getComments(this.id);
