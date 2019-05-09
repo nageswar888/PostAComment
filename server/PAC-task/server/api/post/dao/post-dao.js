@@ -17,9 +17,18 @@ export class postDao {
 
             models.Post.findAndCountAll({
               where:{
+                [Op.or]: [
+                  {
                     postedBy: {
-                      [Op.like]: '%'+search+'%'
+                      [Op.iLike]: '%' + search + '%'
                     }
+                  },
+                  {
+                    title: {
+                      [Op.iLike]: '%' + search + '%'
+                    }
+                  },
+                    ]
               },
               limit: limit,
               offset: offset,
@@ -37,15 +46,6 @@ export class postDao {
     })
   }
 
-
-   /*static getAll() {
-    return new Promise((resolve, reject) =>{
-      models.Post.findAndCountAll()
-        .then(branch => { resolve(branch); })
-        .catch(error =>{ reject(error)})
-    })
-  }
-*/
   static createNew(_body) {
     return new Promise((resolve, reject) => {
       models.Post.create({

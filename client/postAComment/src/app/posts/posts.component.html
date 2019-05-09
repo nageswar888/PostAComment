@@ -21,10 +21,8 @@
 <!--
       <div><input type="search" aria-label="Search" [(ngModel)]="SearchByPost" (input)="searchByPost()" placeholder=" search by post"></div><br>
 -->
-      <div><input type="search" aria-label="Search" [(ngModel)]="SearchByPost"  (input)="searchByPost()" placeholder=" search by user"></div><br>
-<!--
-      <div><input type="search" aria-label="Search" [(ngModel)]="SearchByTitle" (input)="searchTitle()" placeholder=" search by title"></div><br>
--->
+      <div><input type="text" aria-label="Search" [(ngModel)]="SearchByUser"  (input)="search('user')" placeholder=" search by user"></div><br>
+      <div><input type="search" aria-label="Search" [(ngModel)]="SearchByTitle" (input)="search('title')" placeholder=" search by title"></div><br>
 <!--
       <div><input type="date" aria-label="Search" [(ngModel)]="Search" (input)="search()" placeholder=" search by date"></div>
 -->

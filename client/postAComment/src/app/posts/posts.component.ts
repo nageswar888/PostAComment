@@ -28,7 +28,8 @@ export class PostsComponent implements OnInit {
   public SearchByPost: any = ''
   public SearchByUser: any = ''
   public SearchByTitle: any = ''
-  alert: any = false
+  public Search: any = '';
+  public alert: any = false
 
   constructor(private service: PostService,
               private fb: FormBuilder,
@@ -51,7 +52,7 @@ export class PostsComponent implements OnInit {
     this.page={
       pageNo:this.pageno,
       itemsPerPage:this.itemsPPage,
-      Search: this.SearchByPost
+      Search: this.Search
     };
     this.service.getPost( this.page).subscribe((response) => {
       this.postings = response.rows;
@@ -66,7 +67,7 @@ export class PostsComponent implements OnInit {
     this.page={
       pageNo:this.pageno,
       itemsPerPage:this.itemsPPage,
-      Search: this.SearchByPost
+      Search: this.Search
     };
     this.service.getPost(this.page).subscribe(response =>{
       this.postings = response.rows;
@@ -74,18 +75,18 @@ export class PostsComponent implements OnInit {
       })
   }
 
-  searchByPost(){
+  searchFromDb(){
     this.page={
       pageNo:this.pageno,
       itemsPerPage:this.itemsPPage,
-      Search: this.SearchByPost
+      Search: this.Search
     };
     this.service.getPost(this.page).subscribe(response =>{
       this.postings = response.rows;
       this.total = response.count
 
     })
-    console.log("--",this.page.Search)
+    console.log("--h",this.Search)
   }
 
 
@@ -116,6 +117,21 @@ export class PostsComponent implements OnInit {
   navigate(value){
     this.Routes.navigate(['/comments-likes', value])
     //console.log(value)
+  }
+
+  search(value){
+    console.log("-----------",value)
+    if(value=="user"){
+      this.Search = this.SearchByUser
+      this.searchFromDb()
+    }
+    else if(value=="title"){
+      this.Search = this.SearchByTitle
+      this.searchFromDb()
+    }
+    else{
+      console.log("Nageswar")
+    }
   }
 
 }
