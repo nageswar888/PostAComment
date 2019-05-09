@@ -15,7 +15,6 @@ export class PostsComponent implements OnInit {
   userFilter: any = { text: '',postedBy: '', createdAt: '', title: ''}
 
   public postings: any = [];
-  public flag: boolean;
   public submitted: boolean;
   public formdata: any;
 
@@ -23,8 +22,13 @@ export class PostsComponent implements OnInit {
   public pageNo: number;
   public itemsPPage: number=4;
   public total:number;
-  public page: { pageNo: number; itemsPerPage: number };
+  public page: any
   public pageno: any=1;
+
+  public SearchByPost: any = ''
+  public SearchByUser: any = ''
+  public SearchByTitle: any = ''
+  alert: any = false
 
   constructor(private service: PostService,
               private fb: FormBuilder,
@@ -46,11 +50,13 @@ export class PostsComponent implements OnInit {
   getpost() {
     this.page={
       pageNo:this.pageno,
-      itemsPerPage:this.itemsPPage
+      itemsPerPage:this.itemsPPage,
+      Search: this.SearchByPost
     };
     this.service.getPost( this.page).subscribe((response) => {
       this.postings = response.rows;
       this.total = response.count
+      console.log("postings in getpost",this.postings)
     })
   }
 
@@ -59,16 +65,30 @@ export class PostsComponent implements OnInit {
     this.pageno=pageNumber;
     this.page={
       pageNo:this.pageno,
-      itemsPerPage:this.itemsPPage
+      itemsPerPage:this.itemsPPage,
+      Search: this.SearchByPost
     };
     this.service.getPost(this.page).subscribe(response =>{
       this.postings = response.rows;
+      console.log("postings in getPagination",this.postings)
       })
   }
 
-  reset(data){
-    data.reset()
+  searchByPost(){
+    this.page={
+      pageNo:this.pageno,
+      itemsPerPage:this.itemsPPage,
+      Search: this.SearchByPost
+    };
+    this.service.getPost(this.page).subscribe(response =>{
+      this.postings = response.rows;
+      this.total = response.count
+
+    })
+    console.log("--",this.page.Search)
   }
+
+
 
   submit(value){
     this.submitted = true
@@ -78,7 +98,7 @@ export class PostsComponent implements OnInit {
     }
     else{
       this.createPost(this.formdata)
-      this.flag=false
+      this.alert=true
     }
   }
 
@@ -89,7 +109,7 @@ export class PostsComponent implements OnInit {
     },
       ()=> {},
       () => {
-      this.postings.unshift(user);
+      this.getpost()
       });
   }
 

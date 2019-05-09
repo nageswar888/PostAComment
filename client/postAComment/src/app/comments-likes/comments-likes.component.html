@@ -36,11 +36,16 @@
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title">Adding a comment</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Adding a comment</h4><br>
           </div>
           <!-- Modal body -->
+
           <div class="modal-body">
+            <div class="container">
+              <div class="alert alert-success" *ngIf="alert">
+                Successfully added the comment!
+              </div>
+            </div>
             <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
 
               <div class="form-group">

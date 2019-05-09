@@ -17,7 +17,6 @@ export class CommentsLikesComponent implements OnInit {
 
   public complexForm : FormGroup;
 
-  public flag= false;
   public id: number;
   private sub: any;
   public p: number = 1;
@@ -27,6 +26,7 @@ export class CommentsLikesComponent implements OnInit {
   public postings: any;
   public submitted: boolean;
   private formdata: any;
+  public alert: any = false
 
 
   constructor(private cservice: CommentsLikesService,
@@ -95,7 +95,7 @@ export class CommentsLikesComponent implements OnInit {
     }
     else{
       this.createComment(this.formdata)
-      this.flag= false    //for disappiaring of form
+      this.alert= true
       //this.complexForm.reset()
     }
     }

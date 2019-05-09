@@ -13,12 +13,6 @@ export const UserEndPoint = (type:string,params:any)=> {
 
     case POST:
       let ActionPro = environment.API_ROOT + 'post';
-     /* if (typeof params != "undefined") {
-        ActionPro += '/' + params;
-        //console.log("ActionPro")
-      } else {
-        ActionPro = environment.API_ROOT + 'post';
-      }*/
       return ActionPro;
 
     case POSTBYID:

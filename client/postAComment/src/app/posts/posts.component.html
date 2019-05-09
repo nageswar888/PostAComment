@@ -18,10 +18,16 @@
   <div class="row">
     <div class="col-md-2">
       <br><div id="filter"><b>Filters</b></div>
-      <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.text" placeholder=" search by post"></div><br>
-      <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.postedBy" placeholder=" search by user"></div><br>
-      <div><input type="search" aria-label="Search" [(ngModel)]="userFilter.title" placeholder=" search by title"></div><br>
-      <div><input type="date" aria-label="Search" [(ngModel)]="userFilter.createdAt" placeholder=" search by date"></div>
+<!--
+      <div><input type="search" aria-label="Search" [(ngModel)]="SearchByPost" (input)="searchByPost()" placeholder=" search by post"></div><br>
+-->
+      <div><input type="search" aria-label="Search" [(ngModel)]="SearchByPost"  (input)="searchByPost()" placeholder=" search by user"></div><br>
+<!--
+      <div><input type="search" aria-label="Search" [(ngModel)]="SearchByTitle" (input)="searchTitle()" placeholder=" search by title"></div><br>
+-->
+<!--
+      <div><input type="date" aria-label="Search" [(ngModel)]="Search" (input)="search()" placeholder=" search by date"></div>
+-->
     </div>
 
     <div class="col-md-10">
@@ -34,10 +40,15 @@
               <!-- Modal Header -->
               <div class="modal-header">
                 <h4 class="modal-title">Adding a post</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
               <!-- Modal body -->
+
               <div class="modal-body">
+                <div class="container">
+                  <div class="alert alert-success" *ngIf="alert">
+                    Successfully added the post!
+                  </div>
+                </div>
                 <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">
 
                   <div class="form-group">
@@ -78,7 +89,7 @@
 <!--posts-->
   <div class="col-md-4"></div>
   <div *ngIf="postings">
-  <div *ngFor="let post of postings | filterBy: userFilter | paginate: {itemsPerPage: itemsPPage, currentPage: pageno, totalItems:total}"><hr>
+  <div *ngFor="let post of postings | paginate: {itemsPerPage: itemsPPage, currentPage: pageno, totalItems:total}"><hr>
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-10"><b>{{post.postedBy}}</b>

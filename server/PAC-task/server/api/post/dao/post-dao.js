@@ -1,19 +1,26 @@
 import models from '../../../models';
 import Promise from 'bluebird';
+import Sequelize from "sequelize";
+const Op = Sequelize.Op
+
 
 export class postDao {
 
 
-  static getAll(pageData,limit) {
+  static getAll(pageData,limit,search) {
     return new Promise((resolve, reject) => {
       models.Post.findAndCountAll()
         .then(data=>{
             let page = pageData;      // page number
-          console.log("----",page)
             let pages = Math.ceil(data.count / limit);
             let offset = limit * (page - 1);
 
             models.Post.findAndCountAll({
+              where:{
+                    postedBy: {
+                      [Op.like]: '%'+search+'%'
+                    }
+              },
               limit: limit,
               offset: offset,
               order: [
