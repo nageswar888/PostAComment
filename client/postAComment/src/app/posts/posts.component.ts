@@ -29,6 +29,7 @@ export class PostsComponent implements OnInit {
   public SearchByUser: any = ''
   public SearchByTitle: any = ''
   public Search: any = '';
+  public columnName: any = 'undefined';
   public alert: any = false
 
   constructor(private service: PostService,
@@ -49,10 +50,12 @@ export class PostsComponent implements OnInit {
 
 
   getpost() {
+    console.log("method call")
     this.page={
       pageNo:this.pageno,
       itemsPerPage:this.itemsPPage,
-      Search: this.Search
+      Search: this.Search,
+      columnName: this.columnName
     };
     this.service.getPost( this.page).subscribe((response) => {
       this.postings = response.rows;
@@ -67,26 +70,13 @@ export class PostsComponent implements OnInit {
     this.page={
       pageNo:this.pageno,
       itemsPerPage:this.itemsPPage,
-      Search: this.Search
+      Search: this.Search,
+      columnName: this.columnName
     };
     this.service.getPost(this.page).subscribe(response =>{
       this.postings = response.rows;
       console.log("postings in getPagination",this.postings)
       })
-  }
-
-  searchFromDb(){
-    this.page={
-      pageNo:this.pageno,
-      itemsPerPage:this.itemsPPage,
-      Search: this.Search
-    };
-    this.service.getPost(this.page).subscribe(response =>{
-      this.postings = response.rows;
-      this.total = response.count
-
-    })
-    console.log("--h",this.Search)
   }
 
 
@@ -120,18 +110,64 @@ export class PostsComponent implements OnInit {
   }
 
   search(value){
-    console.log("-----------",value)
     if(value=="user"){
       this.Search = this.SearchByUser
-      this.searchFromDb()
+      this.columnName = 'postedBy'
+      this.searchByUser()
     }
     else if(value=="title"){
       this.Search = this.SearchByTitle
-      this.searchFromDb()
+      this.columnName = 'title'
+      this.searchByTitle()
     }
-    else{
-      console.log("Nageswar")
+    else if(value=="post"){
+      this.Search = this.SearchByPost
+      this.columnName = 'text'
+      this.searchByPost()
     }
+  }
+
+  searchByUser(){
+    this.page={
+      pageNo:this.pageno,
+      itemsPerPage:this.itemsPPage,
+      Search: this.Search,
+      columnName : this.columnName
+    };
+    this.service.getPost(this.page).subscribe(response =>{
+      this.postings = response.rows;
+      this.total = response.count
+
+    })
+  }
+
+  searchByTitle(){
+    this.page={
+      pageNo:this.pageno,
+      itemsPerPage:this.itemsPPage,
+      Search: this.Search,
+      columnName : this.columnName
+
+    };
+    this.service.getPost(this.page).subscribe(response =>{
+      this.postings = response.rows;
+      this.total = response.count
+
+    })
+  }
+
+  searchByPost(){
+    this.page={
+      pageNo:this.pageno,
+      itemsPerPage:this.itemsPPage,
+      Search: this.Search,
+      columnName : this.columnName
+    };
+    this.service.getPost(this.page).subscribe(response =>{
+      this.postings = response.rows;
+      this.total = response.count
+
+    })
   }
 
 }

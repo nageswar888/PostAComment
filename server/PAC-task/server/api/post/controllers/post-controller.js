@@ -1,12 +1,23 @@
 import {postDao} from '../dao/post-dao';
 
 export class postController {
+
   static getAll(req, res) {
     //console.log(req)
-    postDao.getAll( req.query.pageNo,req.query.itemsPerPage,req.query.Search)
+    let d = req.query.columnName
+    console.log("------------------hello",d)
+    postDao.getAll( req.query.pageNo,req.query.itemsPerPage,req.query.Search,req.query.columnName)
       .then(post => res.status(200).json(post))
       .catch(error => res.status(400).json(error));
   }
+
+ /* static getBySearch(req, res) {
+    console.log("------------------",d)
+    postDao.getBySearch( req.query.pageNo,req.query.itemsPerPage,req.query.Search,req.query.columnName)
+      .then(post => res.status(200).json(post))
+      .catch(error => res.status(400).json(error));
+  }*/
+
 
   static createNew(req, res) {
     let _body = req.body;

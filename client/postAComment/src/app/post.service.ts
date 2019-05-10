@@ -15,7 +15,15 @@ export class PostService {
 
   getPost(params):Observable<any>{
     //let params
+    console.log("params",params)
     return this.queryApi.doGet('POST',params)
+      .pipe(
+        catchError(err => of([err]))
+      );
+  }
+
+  getPostBySearch(params){
+    return this.queryApi.doGet('POSTBYSEARCH',params)
       .pipe(
         catchError(err => of([err]))
       );

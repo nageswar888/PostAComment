@@ -5,7 +5,8 @@ export const LIKE = 'LIKE';
 export const COMMENTPOST = 'COMMENTPOST';
 export const LIKEPOST = 'LIKEPOST';
 export const POSTSPOST = 'POSTSPOST';
-export const POSTBYID = 'POSTBYID'
+export const POSTBYID = 'POSTBYID';
+//export const POSTBYSEARCH = 'POSTBYSEARCH'
 
 export const UserEndPoint = (type:string,params:any)=> {
 
@@ -14,6 +15,10 @@ export const UserEndPoint = (type:string,params:any)=> {
     case POST:
       let ActionPro = environment.API_ROOT + 'post';
       return ActionPro;
+
+    /*case POSTBYSEARCH:
+      return environment.API_ROOT + 'post/search';
+*/
 
     case POSTBYID:
       return environment.API_ROOT + 'post/' + params;

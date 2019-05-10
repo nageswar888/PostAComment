@@ -7,28 +7,30 @@ const Op = Sequelize.Op
 export class postDao {
 
 
-  static getAll(pageData,limit,search) {
+  static getAll(pageData,limit,search,column) {
+    let columns
+    console.log("in dao",column)
+    console.log("in dao limit ",limit)
     return new Promise((resolve, reject) => {
       models.Post.findAndCountAll()
         .then(data=>{
             let page = pageData;      // page number
             let pages = Math.ceil(data.count / limit);
             let offset = limit * (page - 1);
+            if(column== 'undefined'){
+              column='postedBy'
+              console.log("--------column",column)
+            }
 
             models.Post.findAndCountAll({
               where:{
-                [Op.or]: [
-                  {
-                    postedBy: {
+               // [Op.eq]: 'postedBy'|'text'|'title'[
+                 // {
+                    [column]: {
                       [Op.iLike]: '%' + search + '%'
                     }
-                  },
-                  {
-                    title: {
-                      [Op.iLike]: '%' + search + '%'
-                    }
-                  },
-                    ]
+                 // }
+                 // ]
               },
               limit: limit,
               offset: offset,
@@ -45,6 +47,43 @@ export class postDao {
         })
     })
   }
+
+/*
+  static getBySearch(pageData,limit,search,column) {
+    return new Promise((resolve, reject) => {
+      models.Post.findAndCountAll()
+        .then(data=>{
+          let page = pageData;      // page number
+          let pages = Math.ceil(data.count / limit);
+          let offset = limit * (page - 1);
+
+          models.Post.findAndCountAll({
+            where:{
+              [Op.or]: [
+                {
+                  [column]: {
+                    [Op.iLike]: '%' + search + '%'
+                  }
+                },
+              ]
+            },
+            limit: limit,
+            offset: offset,
+            order: [
+              ['createdAt', 'DESC']
+            ]
+          }).then(result =>{
+            resolve(result);
+          }).catch(err =>{
+            reject(err);
+          });
+        }).catch(error=>{
+        reject(error);
+      })
+    })
+  }
+*/
+
 
   static createNew(_body) {
     return new Promise((resolve, reject) => {
