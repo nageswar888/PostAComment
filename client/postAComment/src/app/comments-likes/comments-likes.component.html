@@ -13,9 +13,6 @@
         </div>
         <div>
           <button type="button" class="btn text-color" (click)="post_likes()"><i class="far fa-thumbs-up" ></i>&nbsp;<span *ngIf="likes">{{likes.length}}</span></button>&nbsp;
-<!--
-          <button type="button" class="btn text-color" (click)="display_form()"><i class="far fa-comment-alt"></i> Add Comment</button>
--->
           <button type="button" class="btn" data-toggle="modal" data-target="#myModal" class="btn text-color">
             <i class="far fa-comment-alt"></i> Add Comment
           </button>
@@ -43,7 +40,7 @@
           <div class="modal-body">
             <div class="container">
               <div class="alert alert-success" *ngIf="alert">
-                Successfully added the comment!
+                <i class="far fa-thumbs-up"></i> Successfully added the comment!
               </div>
             </div>
             <form [formGroup]="complexForm" (ngSubmit)="submit(complexForm.value)">

@@ -6,7 +6,6 @@ const Op = Sequelize.Op
 
 export class postDao {
 
-
   static getAll(pageData,limit,search,column) {
     let columns
     console.log("in dao",column)

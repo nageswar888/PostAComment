@@ -12,8 +12,7 @@ export class PostsComponent implements OnInit {
 
   public complexForm : FormGroup;
 
-  userFilter: any = { text: '',postedBy: '', createdAt: '', title: ''}
-
+  public userFilter
   public postings: any = [];
   public submitted: boolean;
   public formdata: any;
@@ -31,6 +30,8 @@ export class PostsComponent implements OnInit {
   public Search: any = '';
   public columnName: any = 'undefined';
   public alert: any = false
+
+  public models
 
   constructor(private service: PostService,
               private fb: FormBuilder,
