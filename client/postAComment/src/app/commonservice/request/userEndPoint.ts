@@ -6,6 +6,8 @@ export const COMMENTPOST = 'COMMENTPOST';
 export const LIKEPOST = 'LIKEPOST';
 export const POSTSPOST = 'POSTSPOST';
 export const POSTBYID = 'POSTBYID';
+export const POSTUSER = 'POSTUSER';
+export const USERBYEMAIL = 'USERBYEMAIL';
 //export const POSTBYSEARCH = 'POSTBYSEARCH'
 
 export const UserEndPoint = (type:string,params:any)=> {
@@ -15,10 +17,6 @@ export const UserEndPoint = (type:string,params:any)=> {
     case POST:
       let ActionPro = environment.API_ROOT + 'post';
       return ActionPro;
-
-    /*case POSTBYSEARCH:
-      return environment.API_ROOT + 'post/search';
-*/
 
     case POSTBYID:
       return environment.API_ROOT + 'post/' + params;
@@ -38,6 +36,14 @@ export const UserEndPoint = (type:string,params:any)=> {
 
     case POSTSPOST:
       return environment.API_ROOT + 'post/'
+
+    case POSTUSER:
+      return environment.API_ROOT + 'user/'
+
+    case USERBYEMAIL:
+      return environment.API_ROOT + 'user/'+ params
+
+
 
   }
 }

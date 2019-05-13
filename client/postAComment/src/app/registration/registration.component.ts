@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegistrationService } from "./registration.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -16,7 +17,9 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router:Router
+    private router:Router,
+    private Registration:RegistrationService,
+
   ) { }
 
   ngOnInit() {
@@ -41,8 +44,15 @@ export class RegistrationComponent implements OnInit {
       return;
     }
     else{
-      this.router.navigate(["/login"])
+      this.post_user(this.formdata)
       this.alert=true
     }
+  }
+  post_user(formdata){
+    //console.log(formdata)
+    this.Registration.PostUser(formdata).subscribe( (responce) => {
+      //console.log("---------responce in ts",responce)
+      this.router.navigate(["/login"])
+    })
   }
 }

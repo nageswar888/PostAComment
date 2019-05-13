@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
+import {RegistrationService} from "../registration/registration.service";
+import { LocalStorage } from '@ngx-pwa/local-storage';
+
 
 @Component({
   selector: 'app-login',
@@ -11,9 +14,12 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   submitted = false;
+  private users: any;
 
   constructor(    private route:Router,
                   private formBuilder: FormBuilder,
+                  private registration: RegistrationService,
+                  private localstorage:LocalStorage
   ) { }
 
   ngOnInit() {
@@ -31,9 +37,30 @@ export class LoginComponent implements OnInit {
       return;
     }
     else {
-      //this.validation(formdata)
-      this.route.navigate(['/posts'])
+      this.validation(formdata)
     }
+  }
+
+  validation(formdata) {
+    let email = formdata.email
+    this.registration.get_user_email(email).subscribe((responce) => {
+        this.users = responce
+        this.localstorage.setItem('user',  this.users).subscribe(() => {});
+
+        if (this.users) {
+          //console.log("-------------",this.users[0].email,"---",this.users[0].password)
+          if ((formdata.email == this.users[0].email) && (formdata.password == this.users[0].password)) {
+            this.route.navigate(['/posts'])
+          }
+          else {
+            alert("failed")
+          }
+        }
+      }, () => {
+      },
+      () => {
+      });
+
   }
 
 }

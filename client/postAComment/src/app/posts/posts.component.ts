@@ -31,8 +31,6 @@ export class PostsComponent implements OnInit {
   public columnName: any = 'undefined';
   public alert: any = false
 
-  public models
-
   constructor(private service: PostService,
               private fb: FormBuilder,
               private Routes:Router) { }
@@ -51,7 +49,7 @@ export class PostsComponent implements OnInit {
 
 
   getpost() {
-    console.log("method call")
+   // console.log("method call")
     this.page={
       pageNo:this.pageno,
       itemsPerPage:this.itemsPPage,
@@ -61,7 +59,7 @@ export class PostsComponent implements OnInit {
     this.service.getPost( this.page).subscribe((response) => {
       this.postings = response.rows;
       this.total = response.count
-      console.log("postings in getpost",this.postings)
+      //console.log("postings in getpost",this.postings)
     })
   }
 
@@ -76,7 +74,7 @@ export class PostsComponent implements OnInit {
     };
     this.service.getPost(this.page).subscribe(response =>{
       this.postings = response.rows;
-      console.log("postings in getPagination",this.postings)
+      //console.log("postings in getPagination",this.postings)
       })
   }
 
@@ -169,6 +167,9 @@ export class PostsComponent implements OnInit {
       this.total = response.count
 
     })
+  }
+  navigateToProfile(){
+    this.Routes.navigate(['/profile'])
   }
 
 }

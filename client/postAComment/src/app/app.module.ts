@@ -14,6 +14,7 @@ import {FilterPipeModule} from "ngx-filter-pipe";
 import {FormsModule} from "@angular/forms";
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RegistrationComponent } from './registration/registration.component';
     CommentsLikesComponent,
     LoginComponent,
     RegistrationComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
