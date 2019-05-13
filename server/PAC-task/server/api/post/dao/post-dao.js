@@ -47,42 +47,6 @@ export class postDao {
     })
   }
 
-/*
-  static getBySearch(pageData,limit,search,column) {
-    return new Promise((resolve, reject) => {
-      models.Post.findAndCountAll()
-        .then(data=>{
-          let page = pageData;      // page number
-          let pages = Math.ceil(data.count / limit);
-          let offset = limit * (page - 1);
-
-          models.Post.findAndCountAll({
-            where:{
-              [Op.or]: [
-                {
-                  [column]: {
-                    [Op.iLike]: '%' + search + '%'
-                  }
-                },
-              ]
-            },
-            limit: limit,
-            offset: offset,
-            order: [
-              ['createdAt', 'DESC']
-            ]
-          }).then(result =>{
-            resolve(result);
-          }).catch(err =>{
-            reject(err);
-          });
-        }).catch(error=>{
-        reject(error);
-      })
-    })
-  }
-*/
-
 
   static createNew(_body) {
     return new Promise((resolve, reject) => {

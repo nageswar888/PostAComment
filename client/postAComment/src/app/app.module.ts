@@ -12,12 +12,16 @@ import { ReactiveFormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FilterPipeModule} from "ngx-filter-pipe";
 import {FormsModule} from "@angular/forms";
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
     CommentsLikesComponent,
+    LoginComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
