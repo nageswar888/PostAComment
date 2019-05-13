@@ -10,8 +10,17 @@
         <div><button type="button" class="btn" data-toggle="modal" data-target="#myModal">
           <i class="far fa-clipboard"></i>&nbsp;<b>Add Post</b>
       </button>
-          <button type="button" class="btn" (click)="navigateToProfile()" ><b>Profile</b>
-          </button></div>
+
+        <div class="dropdown">
+          <div *ngIf="loggedUser">
+            <p class="dropbtn col-md-1"><b>{{loggedUser[0].firstName}}</b></p></div>
+          <div class="dropdown-content">
+            <button class="btn btn-link" (click)="navigateToProfile()">Profile</button><br>
+            <button class="btn btn-link" (click)="logout()">Logout</button>
+          </div>
+        </div>
+        </div>
+
       </div>
     </div>
   </nav>

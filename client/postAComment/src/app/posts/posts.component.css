@@ -26,3 +26,37 @@ h3{
 .mycontent-left {
   border-right: 1px solid #333;
 }
+
+/*user dropdown*/
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 150%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+.dropbtn{
+  cursor: all-scroll;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 8px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {display: block; }
+

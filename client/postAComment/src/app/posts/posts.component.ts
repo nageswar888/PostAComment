@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PostService} from '../post.service';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'app-posts',
@@ -30,13 +31,19 @@ export class PostsComponent implements OnInit {
   public Search: any = '';
   public columnName: any = 'undefined';
   public alert: any = false
+  public loggedUser: any;
 
   constructor(private service: PostService,
               private fb: FormBuilder,
-              private Routes:Router) { }
+              private Routes:Router,
+              private localstorage: LocalStorage) { }
 
   ngOnInit() {
     this.getpost()
+
+    this.localstorage.getItem('user').subscribe((user) => {
+      this.loggedUser = user
+    })
 
     this.complexForm = this.fb.group({
       'postedBy': [null,  [Validators.required,Validators.pattern(/^[^-\s][a-zA-Z0-9_\s-]+$/)]], //if we put double quotes then / is not required
@@ -170,6 +177,10 @@ export class PostsComponent implements OnInit {
   }
   navigateToProfile(){
     this.Routes.navigate(['/profile'])
+  }
+
+  logout(){
+    this.Routes.navigate(['/login'])
   }
 
 }
