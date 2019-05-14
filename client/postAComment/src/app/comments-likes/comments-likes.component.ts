@@ -69,7 +69,7 @@ export class CommentsLikesComponent implements OnInit {
     })
   }
 
-  post_likes(){
+  postLikes(){
     let data
     console.log("--------",this.id)
     let params = this.id

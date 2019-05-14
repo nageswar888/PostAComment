@@ -60,3 +60,16 @@ h3{
 
 .dropdown:hover .dropdown-content {display: block; }
 
+
+/*pagination*/
+#pagination{
+  position: fixed;
+  left: 0;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;
+}
+
+#id1:focus {
+  box-shadow: none !important;
+}

@@ -9,6 +9,7 @@ export class likeRoutes {
     router.route('/like/:id')
       .get(likeController.getById)
       .delete(likeController.delete)
+      .put(likeController.update)
 
   }
 }

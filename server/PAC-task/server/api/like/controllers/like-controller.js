@@ -28,5 +28,14 @@ export class likeController {
       .then(like => res.status(200).json(like))
       .catch(error => res.status(400).json(error));
   }
+
+  static update(req, res) {
+    let paramet = req.params.id
+    let _body = req.body;
+    //console.log('---------', _body)
+    likeDao.update(_body,paramet)
+      .then(like => res.status(200).json(like))
+      .catch(error => res.status(400).json(error));
+  }
 }
 

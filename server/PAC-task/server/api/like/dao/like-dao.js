@@ -56,4 +56,19 @@ export class likeDao {
         });
     });
   }
+
+  static update(body,paramet) {
+    return new Promise((resolve, reject) => {
+      models.Likes.update({
+        postId: body.postId
+      },{where:{id: paramet}})
+        .then(like => {
+          resolve(like);
+          //console.log("88",like)
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
 }

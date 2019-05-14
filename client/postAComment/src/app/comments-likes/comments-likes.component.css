@@ -27,3 +27,11 @@ strong{
 {
   color: midnightblue;
 }
+
+.focusclass:focus{
+  box-shadow: none !important;
+}
+pagination-controls:focus{
+  box-shadow: none !important;
+
+}
