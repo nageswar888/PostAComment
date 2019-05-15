@@ -100,6 +100,7 @@ export class PostsComponent implements OnInit {
   }
 
   createPost(formdata){
+    this.complexForm.reset();
     let user: any;
     this.service.createPost(formdata).subscribe(data=>{
       user = data;
@@ -181,6 +182,10 @@ export class PostsComponent implements OnInit {
 
   logout(){
     this.Routes.navigate(['/login'])
+  }
+
+  clearingForm(){
+    this.complexForm.reset()
   }
 
 }

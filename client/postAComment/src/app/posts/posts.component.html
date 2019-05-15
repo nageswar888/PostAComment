@@ -7,7 +7,7 @@
         <div></div>
       </div>
       <div class="col-md-3">
-        <div><button type="button" class="btn" id="id1"   data-toggle="modal" data-target="#myModal">
+        <div><button type="button" class="btn" id="id1" data-toggle="modal" data-target="#myModal">
           <i class="far fa-clipboard"></i>&nbsp;<b>Add Post</b>
       </button>
 
@@ -47,10 +47,9 @@
               <!-- Modal Header -->
               <div class="modal-header">
                 <h4 class="modal-title">Add Post</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" (click)="clearingForm()" data-dismiss="modal">&times;</button>
               </div>
               <!-- Modal body -->
-
               <div class="modal-body">
                 <div class="container">
                   <div class="alert alert-success" *ngIf="alert">
